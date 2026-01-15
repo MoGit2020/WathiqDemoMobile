@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Wathiq.om Mobile</title>
+    <title>Wathiq.om Mobile App</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -12,35 +12,46 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Kufi+Arabic:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', 'Noto Kufi Arabic', sans-serif; background-color: #f3f4f6; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Inter', 'Noto Kufi Arabic', sans-serif; background-color: #f8fafc; -webkit-tap-highlight-color: transparent; }
+        
+        /* Animations */
         .slide-up { animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-        .fade-in { animation: fadeIn 0.3s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
-        /* Mobile Specifics */
-        .safe-area-bottom { padding-bottom: env(safe-area-inset-bottom); }
+        .fade-in { animation: fadeIn 0.2s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .pulse-ring { animation: pulse-ring 2s infinite; }
+        @keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+
+        /* Form Styling */
+        .mm-field { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; margin-bottom: 8px; }
+        .mm-label { font-size: 10px; font-weight: 700; color: #64748b; text-transform: uppercase; display: block; margin-bottom: 4px; }
+        .mm-value { font-size: 13px; font-weight: 600; color: #1e293b; min-height: 20px; }
+        .typing { background-color: #f0fdf4; border-color: #86efac; transition: background 0.3s; }
+        
+        .signature-font { font-family: 'Dancing Script', cursive; font-size: 1.5rem; }
+        
+        /* Stamp */
+        .stamp-active { opacity: 0.9; transform: scale(1) rotate(-12deg); transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        
+        /* Layout Utilities */
+        .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        .mm-input { width: 100%; border: 1px solid #e2e8f0; padding: 8px; font-size: 13px; background: #fff; color: #334155; border-radius: 8px; height: 36px; }
-        .mm-label { font-size: 11px; font-weight: 600; color: #64748b; text-transform: uppercase; display: block; margin-bottom: 4px; }
-        .typing { background-color: #f0fdf4; border-color: #4ade80; transition: background 0.3s; }
-        .signature-font { font-family: 'Dancing Script', cursive; font-size: 1.5rem; }
-        .stamp-active { opacity: 0.9; transform: scale(1) rotate(-12deg); transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     </style>
 </head>
-<body class="bg-gray-100 text-slate-800">
-    <div id="root"></div>
+<body class="bg-gray-50 text-slate-800 h-screen overflow-hidden">
+    <div id="root" class="h-full"></div>
 
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        // --- DATA (Synced with Desktop V17) ---
+        // --- DATA (Matches Desktop V18) ---
         const TENANT = { 
             name: "Sara Khan", id: "CV99281", mobile: "99887766", email: "sara.khan@gmail.com", 
             avatar: "https://ui-avatars.com/api/?name=Sara+Khan&background=db2777&color=fff",
-            rating: 4.8, sector: "Private Sector", nationality: "Expat",
+            rating: 4.8, sector: "Private (PDO)", nationality: "Expat",
             reviews: [{ user: "Landlord X", comment: "Paid on time." }]
         };
         const LANDLORDS = {
@@ -50,9 +61,9 @@
             'Khlfan': { name: "Khlfan Al-Siyabi", id: "CV444", mobile: "99445566", avatar: "https://ui-avatars.com/api/?name=Khlfan+Siyabi&background=475569&color=fff", rating: 4.2, verified: false, reviews: [] }
         };
         const PROPERTIES = [
-            { id: 1, landlord: 'Ahmed', title: "Sea View 2BHK", price: 600, beds: 2, baths: 3, area: 145, loc: "Al Mouj", img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80", type: "Apt" },
+            { id: 1, landlord: 'Ahmed', title: "Sea View 2BHK", price: 600, beds: 2, baths: 3, area: 145, loc: "Al Mouj, Marsa 1", img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80", type: "Apt" },
             { id: 2, landlord: 'Salim', title: "Muscat Hills Villa", price: 950, beds: 4, baths: 5, area: 350, loc: "Muscat Hills", img: "https://images.unsplash.com/photo-1600596542815-2250651d2116?auto=format&fit=crop&w=800&q=80", type: "Villa" },
-            { id: 3, landlord: 'Said', title: "Azaiba Studio", price: 300, beds: 1, baths: 1, area: 75, loc: "Azaiba", img: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80", type: "Studio" },
+            { id: 3, landlord: 'Said', title: "Azaiba Studio", price: 300, beds: 1, baths: 1, area: 75, loc: "Azaiba North", img: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80", type: "Studio" },
             { id: 4, landlord: 'Khlfan', title: "Family Apt", price: 450, beds: 3, baths: 3, area: 180, loc: "Bausher Heights", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80", type: "Apartment" },
             { id: 5, landlord: 'Ahmed', title: "Beachfront Villa", price: 1200, beds: 5, baths: 6, area: 450, loc: "Shatti Al Qurum", img: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80", type: "Villa" },
             { id: 6, landlord: 'Salim', title: "City Apt", price: 500, beds: 2, baths: 2, area: 120, loc: "Qurum", img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80", type: "Apartment" },
@@ -63,24 +74,13 @@
 
         // --- COMPONENTS ---
 
-        const Header = ({ title, back, onBack, rightIcon }) => (
-            <div className="bg-white px-4 pt-12 pb-4 flex justify-between items-center shadow-sm sticky top-0 z-20">
-                {back ? <button onClick={onBack}><i className="fas fa-chevron-left text-lg text-slate-600"></i></button> : <div className="w-4"></div>}
-                <h1 className="font-bold text-lg">{title}</h1>
-                <div className="w-4">{rightIcon}</div>
-            </div>
-        );
-
-        const BottomNav = ({ active, onNav, role }) => (
-            <div className="fixed bottom-0 w-full bg-white border-t border-slate-200 flex justify-around items-center pb-6 pt-3 z-30 safe-area-bottom">
-                <button onClick={() => onNav('home')} className={`flex flex-col items-center ${active === 'home' ? 'text-emerald-600' : 'text-slate-400'}`}>
-                    <i className="fas fa-home text-xl mb-1"></i><span className="text-[10px] font-medium">Home</span>
-                </button>
-                <button onClick={() => onNav('apps')} className={`flex flex-col items-center ${active === 'apps' ? 'text-emerald-600' : 'text-slate-400'}`}>
-                    <i className="fas fa-file-contract text-xl mb-1"></i><span className="text-[10px] font-medium">{role === 'Tenant' ? 'My Apps' : 'Requests'}</span>
-                </button>
-                <button onClick={() => onNav('profile')} className={`flex flex-col items-center ${active === 'profile' ? 'text-emerald-600' : 'text-slate-400'}`}>
-                    <i className="fas fa-user text-xl mb-1"></i><span className="text-[10px] font-medium">Profile</span>
+        const Header = ({ title, role, onSwitch }) => (
+            <div className={`px-4 pt-12 pb-4 flex justify-between items-center shadow-sm sticky top-0 z-20 ${role === 'Tenant' ? 'bg-white' : 'bg-slate-900 text-white'}`}>
+                <div className="flex items-center gap-2 font-bold text-lg">
+                    <i className="fas fa-shield-alt text-emerald-500"></i> {title}
+                </div>
+                <button onClick={onSwitch} className={`text-[10px] font-bold px-3 py-1 rounded-full border ${role === 'Tenant' ? 'border-slate-200 text-slate-500' : 'border-slate-700 text-slate-300'}`}>
+                    {role} Mode <i className="fas fa-sync ml-1"></i>
                 </button>
             </div>
         );
@@ -88,128 +88,123 @@
         const PropertyCard = ({ p, onClick }) => {
             const l = LANDLORDS[p.landlord];
             return (
-                <div onClick={() => onClick(p)} className="bg-white rounded-2xl overflow-hidden shadow-sm mb-4">
-                    <div className="h-40 relative">
+                <div onClick={() => onClick(p)} className="bg-white rounded-2xl overflow-hidden shadow-sm mb-4 border border-slate-100">
+                    <div className="h-48 relative">
                         <img src={p.img} className="w-full h-full object-cover" />
-                        <div className="absolute bottom-2 left-2 bg-slate-900/80 text-white px-2 py-1 rounded text-xs font-bold">{p.price} OMR</div>
-                        <div className="absolute top-2 right-2 bg-white/90 px-2 py-1 rounded-full text-[10px] font-bold text-emerald-600 flex items-center gap-1"><i className="fas fa-check-circle"></i> Verified</div>
+                        <div className="absolute bottom-3 left-3 bg-slate-900/90 text-white px-3 py-1 rounded-lg text-sm font-bold">{p.price} OMR</div>
+                        <div className="absolute top-3 right-3 bg-white/95 px-2 py-1 rounded-full text-[10px] font-bold text-emerald-700 flex items-center gap-1 shadow-sm"><i className="fas fa-check-circle"></i> Verified</div>
                     </div>
                     <div className="p-4">
-                        <div className="flex justify-between items-start mb-1">
+                        <div className="flex justify-between items-start mb-2">
                             <div>
-                                <h3 className="font-bold text-base mb-1">{p.title}</h3>
-                                <p className="text-xs text-slate-500 mb-2"><i className="fas fa-map-marker-alt mr-1"></i> {p.loc}</p>
+                                <h3 className="font-bold text-lg text-slate-800">{p.title}</h3>
+                                <p className="text-xs text-slate-500"><i className="fas fa-map-marker-alt mr-1"></i> {p.loc}</p>
                             </div>
-                            <div className="flex items-center gap-1 text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded-full">
-                                <img src={l.avatar} className="w-4 h-4 rounded-full" />
-                                {l.name.split(' ')[0]} <i className="fas fa-star text-yellow-400 text-[10px]"></i> {l.rating}
+                            <div className="flex flex-col items-end">
+                                <img src={l.avatar} className="w-6 h-6 rounded-full border border-slate-200 mb-1" />
+                                <span className="text-[10px] text-yellow-500 font-bold"><i className="fas fa-star"></i> {l.rating}</span>
                             </div>
                         </div>
-                        <div className="flex justify-between text-xs text-slate-600 border-t pt-3">
-                            <span><i className="fas fa-bed text-emerald-500 mr-1"></i> {p.beds} Beds</span>
-                            <span><i className="fas fa-bath text-emerald-500 mr-1"></i> {p.baths} Baths</span>
-                            <span><i className="fas fa-ruler text-emerald-500 mr-1"></i> {p.area}m²</span>
+                        <div className="flex justify-between text-xs text-slate-500 border-t border-slate-100 pt-3 mt-3">
+                            <span className="flex items-center gap-1"><i className="fas fa-bed"></i> {p.beds} Beds</span>
+                            <span className="flex items-center gap-1"><i className="fas fa-bath"></i> {p.baths} Baths</span>
+                            <span className="flex items-center gap-1"><i className="fas fa-ruler-combined"></i> {p.area}m²</span>
                         </div>
                     </div>
                 </div>
             );
         };
 
-        const PropertySheet = ({ p, onClose, onApply }) => (
-            <div className="fixed inset-0 z-50 flex flex-col justify-end bg-black/50 backdrop-blur-sm fade-in">
-                <div onClick={onClose} className="flex-1"></div>
-                <div className="bg-white rounded-t-3xl h-[85vh] overflow-y-auto slide-up relative">
-                    <img src={p.img} className="w-full h-64 object-cover" />
-                    <button onClick={onClose} className="absolute top-4 right-4 bg-white/30 p-2 rounded-full text-white"><i className="fas fa-times"></i></button>
-                    <div className="p-6">
-                        <div className="flex justify-between items-start mb-4">
-                            <div>
-                                <h2 className="text-2xl font-bold">{p.title}</h2>
-                                <p className="text-slate-500 text-sm"><i className="fas fa-map-marker-alt mr-1"></i> {p.loc}</p>
-                            </div>
-                            <div className="text-emerald-600 font-bold text-xl">{p.price} OMR</div>
-                        </div>
-                        
-                        <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 mb-6 flex items-center gap-3">
-                            <img src={LANDLORDS[p.landlord].avatar} className="w-12 h-12 rounded-full border-2 border-white shadow-sm" />
-                            <div className="flex-1">
-                                <div className="font-bold text-sm">{LANDLORDS[p.landlord].name}</div>
-                                <div className="text-xs text-emerald-600 font-bold flex items-center gap-1"><i className="fas fa-badge-check"></i> Verified Owner</div>
-                            </div>
-                            <div className="text-right">
-                                <div className="text-yellow-500 text-sm font-bold flex items-center gap-1"><i className="fas fa-star"></i> {LANDLORDS[p.landlord].rating}</div>
-                                <div className="text-[10px] text-slate-400">12 Reviews</div>
-                            </div>
-                        </div>
-
-                        <div className="flex justify-between mb-6 text-center">
-                            <div className="bg-slate-50 p-3 rounded-lg w-[30%]">
-                                <i className="fas fa-bed text-emerald-500 text-lg mb-1"></i>
-                                <div className="text-xs text-slate-500">Bedrooms</div>
-                                <div className="font-bold">{p.beds}</div>
-                            </div>
-                            <div className="bg-slate-50 p-3 rounded-lg w-[30%]">
-                                <i className="fas fa-bath text-emerald-500 text-lg mb-1"></i>
-                                <div className="text-xs text-slate-500">Bathrooms</div>
-                                <div className="font-bold">{p.baths}</div>
-                            </div>
-                            <div className="bg-slate-50 p-3 rounded-lg w-[30%]">
-                                <i className="fas fa-ruler-combined text-emerald-500 text-lg mb-1"></i>
-                                <div className="text-xs text-slate-500">Area</div>
-                                <div className="font-bold">{p.area}m²</div>
-                            </div>
-                        </div>
-
-                        <h3 className="font-bold mb-2">Description</h3>
-                        <p className="text-sm text-slate-600 leading-relaxed mb-20">
-                            Modern luxury apartment with full sea views. Features a fully equipped kitchen, large balcony, and maid's room. Building amenities include a swimming pool, gym, and 24/7 security.
-                        </p>
-                    </div>
-                    <div className="absolute bottom-0 w-full bg-white border-t p-4 safe-area-bottom">
-                        <button onClick={onApply} className="w-full bg-emerald-600 text-white py-3 rounded-xl font-bold shadow-lg">Apply & Verify</button>
-                    </div>
-                </div>
-            </div>
-        );
-
-        const ContractMobile = ({ p, onSign, signed, role, autoFill }) => {
+        // --- MOBILE CONTRACT VIEW (With Auto-Fill Animation) ---
+        const ContractMobile = ({ p, onSign, signed, role, autoFill, onSend }) => {
             const [fields, setFields] = useState({});
             
             useEffect(() => {
                 if(autoFill) {
                     const data = {
-                        l_name: LANDLORDS[p.landlord].name, l_id: LANDLORDS[p.landlord].id,
-                        t_name: TENANT.name, t_id: TENANT.id,
-                        rent: p.price + " OMR", loc: p.loc
+                        l_name: LANDLORDS[p.landlord].name, l_id: LANDLORDS[p.landlord].id, l_mob: LANDLORDS[p.landlord].mobile,
+                        t_name: TENANT.name, t_id: TENANT.id, t_mob: TENANT.mobile,
+                        rent: p.price + " OMR", loc: p.loc, type: p.type
                     };
                     let delay = 300;
-                    Object.keys(data).forEach(k => { setTimeout(() => setFields(prev => ({...prev, [k]: data[k]})), delay); delay+=100; });
+                    Object.keys(data).forEach(k => { 
+                        setTimeout(() => setFields(prev => ({...prev, [k]: data[k]})), delay); 
+                        delay+=150; 
+                    });
                 } else {
-                    setFields({ l_name: LANDLORDS[p.landlord].name, t_name: TENANT.name, rent: p.price, loc: p.loc });
+                    // Static if reviewing
+                    setFields({ 
+                        l_name: LANDLORDS[p.landlord].name, l_id: LANDLORDS[p.landlord].id, l_mob: LANDLORDS[p.landlord].mobile,
+                        t_name: TENANT.name, t_id: TENANT.id, t_mob: TENANT.mobile,
+                        rent: p.price + " OMR", loc: p.loc, type: p.type
+                    });
                 }
             }, []);
 
             return (
-                <div className="bg-white p-4 rounded-xl border border-slate-200 text-sm shadow-sm m-4 mb-20">
-                    <div className="text-center border-b pb-4 mb-4">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Emblem_of_Oman.svg/1200px-Emblem_of_Oman.svg.png" className="h-10 mx-auto opacity-80" />
-                        <h3 className="font-bold mt-2">MUNICIPALITY CONTRACT</h3>
-                        <div className="text-xs text-emerald-600 font-mono">#WQ-2026-881</div>
+                <div className="bg-white rounded-t-3xl h-[90vh] overflow-y-auto slide-up relative flex flex-col">
+                    <div className="sticky top-0 bg-white z-10 px-6 py-4 border-b flex justify-between items-center">
+                        <div>
+                            <h2 className="font-bold text-lg">Lease Contract</h2>
+                            <div className="text-[10px] text-emerald-600 font-mono">AGREEMENT #WQ-2026-881</div>
+                        </div>
+                        {autoFill && Object.keys(fields).length < 9 && <span className="text-[10px] bg-blue-100 text-blue-700 px-2 py-1 rounded font-bold animate-pulse">AI Auto-Filling...</span>}
                     </div>
-                    <div className="space-y-3 mb-6">
-                        <div><span className="mm-label">Landlord (Lessor)</span><div className={`mm-input ${fields.l_name && autoFill && 'typing'}`}>{fields.l_name}</div></div>
-                        <div><span className="mm-label">Tenant</span><div className={`mm-input ${fields.t_name && autoFill && 'typing'}`}>{fields.t_name}</div></div>
-                        <div className="grid grid-cols-2 gap-2">
-                            <div><span className="mm-label">Rent Value</span><div className={`mm-input font-bold ${fields.rent && autoFill && 'typing'}`}>{fields.rent}</div></div>
-                            <div><span className="mm-label">Location</span><div className={`mm-input ${fields.loc && autoFill && 'typing'}`}>{fields.loc}</div></div>
+                    
+                    <div className="p-6 space-y-6 flex-1 bg-slate-50">
+                        {/* 1. Landlord */}
+                        <div>
+                            <div className="text-[10px] font-bold text-slate-400 uppercase mb-2">1. Landlord Details</div>
+                            <div className={`mm-field ${fields.l_name && autoFill && 'typing'}`}><span className="mm-label">Name</span><div className="mm-value">{fields.l_name}</div></div>
+                            <div className="grid grid-cols-2 gap-2">
+                                <div className={`mm-field ${fields.l_id && autoFill && 'typing'}`}><span className="mm-label">ID No</span><div className="mm-value">{fields.l_id}</div></div>
+                                <div className={`mm-field ${fields.l_mob && autoFill && 'typing'}`}><span className="mm-label">Mobile</span><div className="mm-value">{fields.l_mob}</div></div>
+                            </div>
+                        </div>
+
+                        {/* 2. Tenant */}
+                        <div>
+                            <div className="text-[10px] font-bold text-blue-500 uppercase mb-2 flex justify-between"><span>2. Tenant Details</span><span><i className="fas fa-magic"></i> Mala'a Data</span></div>
+                            <div className={`mm-field border-blue-200 ${fields.t_name && autoFill && 'typing'}`}><span className="mm-label">Name</span><div className="mm-value">{fields.t_name}</div></div>
+                            <div className="grid grid-cols-2 gap-2">
+                                <div className={`mm-field border-blue-200 ${fields.t_id && autoFill && 'typing'}`}><span className="mm-label">ID No</span><div className="mm-value">{fields.t_id}</div></div>
+                                <div className={`mm-field border-blue-200 ${fields.t_mob && autoFill && 'typing'}`}><span className="mm-label">Mobile</span><div className="mm-value">{fields.t_mob}</div></div>
+                            </div>
+                        </div>
+
+                        {/* 3. Property */}
+                        <div>
+                            <div className="text-[10px] font-bold text-slate-400 uppercase mb-2">3. Property & Terms</div>
+                            <div className="grid grid-cols-2 gap-2">
+                                <div className={`mm-field ${fields.loc && autoFill && 'typing'}`}><span className="mm-label">Location</span><div className="mm-value">{fields.loc}</div></div>
+                                <div className={`mm-field ${fields.type && autoFill && 'typing'}`}><span className="mm-label">Type</span><div className="mm-value">{fields.type}</div></div>
+                            </div>
+                            <div className={`mm-field border-emerald-200 ${fields.rent && autoFill && 'typing'}`}><span className="mm-label">Monthly Rent</span><div className="mm-value text-emerald-600 text-lg">{fields.rent}</div></div>
+                        </div>
+
+                        <div className="text-[10px] text-slate-500 italic p-3 bg-white border rounded">
+                            * This contract is an Executive Instrument (Sanad Tanfidhi) under Royal Decree 15/2025.
                         </div>
                     </div>
-                    <div className="border-t pt-4 text-center">
-                        <div className="text-xs text-slate-400 uppercase font-bold mb-2">{role} Signature</div>
-                        {signed ? 
-                            <span className="signature-font text-blue-600 text-xl">{role==='Tenant'?TENANT.name:LANDLORDS[p.landlord].name}</span> :
-                            <button onClick={onSign} className="w-full bg-blue-600 text-white py-2 rounded-lg font-bold text-xs animate-pulse">Tap to Sign</button>
-                        }
+
+                    <div className="bg-white border-t p-6 safe-bottom">
+                        <div className="mb-4 text-center">
+                            <div className="text-[10px] uppercase text-slate-400 mb-1">{role} Signature</div>
+                            {signed ? 
+                                <span className="signature-font text-blue-600 text-2xl">{role==='Tenant' ? TENANT.name : LANDLORDS[p.landlord].name}</span> :
+                                <div onClick={onSign} className="h-16 border-2 border-dashed border-blue-300 bg-blue-50 rounded-xl flex items-center justify-center text-blue-500 text-sm font-bold cursor-pointer pulse-ring">Tap to Sign Here</div>
+                            }
+                        </div>
+                        {signed && role === 'Tenant' && (
+                            <button onClick={onSend} className="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold shadow-lg animate-bounce flex items-center justify-center gap-2">
+                                Send to Landlord <i className="fas fa-paper-plane"></i>
+                            </button>
+                        )}
+                        {signed && role === 'Landlord' && (
+                            <button onClick={onSend} className="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold shadow-lg flex items-center justify-center gap-2">
+                                Approve & Activate <i className="fas fa-check-circle"></i>
+                            </button>
+                        )}
                     </div>
                 </div>
             );
@@ -220,9 +215,9 @@
         const TenantHome = ({ onPropClick }) => (
             <div className="p-4 pb-24">
                 <div className="flex gap-2 overflow-x-auto pb-4 no-scrollbar">
-                    <div className="bg-emerald-600 text-white px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap">All Properties</div>
-                    <div className="bg-white border px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap">Al Mouj</div>
-                    <div className="bg-white border px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap">Muscat Hills</div>
+                    <div className="bg-emerald-600 text-white px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap shadow-sm">All Properties</div>
+                    <div className="bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap">Al Mouj</div>
+                    <div className="bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap">Muscat Hills</div>
                 </div>
                 {PROPERTIES.map(p => <PropertyCard key={p.id} p={p} onClick={onPropClick} />)}
             </div>
@@ -232,26 +227,43 @@
             <div className="p-4 pb-24">
                 <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 mb-6">
                     <div className="text-xs text-slate-500 uppercase font-bold">Revenue (Feb)</div>
-                    <div className="text-2xl font-bold text-slate-800">1,200 OMR</div>
-                    <div className="w-full bg-gray-100 h-1.5 rounded-full mt-2"><div className="bg-emerald-500 h-1.5 rounded-full w-2/3"></div></div>
+                    <div className="text-3xl font-bold text-slate-800">1,200 OMR</div>
+                    <div className="flex items-center gap-2 mt-2 text-xs text-emerald-600"><i className="fas fa-arrow-up"></i> 100% Occupancy</div>
                 </div>
-                <h3 className="font-bold text-lg mb-4">Requests</h3>
+                
+                <h3 className="font-bold text-lg mb-4 text-white">Requests</h3>
                 {hasApp ? (
-                    <div className="bg-white p-4 rounded-xl border border-blue-100 shadow-sm relative overflow-hidden">
-                        <div className="absolute top-0 right-0 bg-blue-500 text-white text-[10px] px-2 py-1 rounded-bl font-bold">NEW</div>
-                        <div className="flex gap-3 items-center mb-3">
-                            <img src={TENANT.avatar} className="w-10 h-10 rounded-full" />
-                            <div>
-                                <div className="font-bold text-sm">{TENANT.name}</div>
-                                <div className="text-xs text-emerald-600 font-bold">Mala'a: 720</div>
+                    <div className="bg-white p-4 rounded-xl border-l-4 border-blue-500 shadow-sm relative overflow-hidden">
+                        <div className="flex justify-between items-start mb-3">
+                            <div className="flex gap-3 items-center">
+                                <img src={TENANT.avatar} className="w-12 h-12 rounded-full border border-slate-200" />
+                                <div>
+                                    <div className="font-bold text-base">{TENANT.name}</div>
+                                    <div className="text-xs text-slate-500">Sea View 2BHK</div>
+                                </div>
+                            </div>
+                            <span className="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-1 rounded">New Offer</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2 mb-4">
+                            <div className="bg-slate-50 p-2 rounded text-center">
+                                <div className="text-[10px] text-slate-400 uppercase">Mala'a Score</div>
+                                <div className="font-bold text-emerald-600">720 (Excellent)</div>
+                            </div>
+                            <div className="bg-slate-50 p-2 rounded text-center">
+                                <div className="text-[10px] text-slate-400 uppercase">Employment</div>
+                                <div className="font-bold text-slate-700">{TENANT.sector}</div>
                             </div>
                         </div>
                         {appSigned ? 
-                            <div className="bg-gray-100 text-center py-2 rounded text-xs font-bold text-gray-500">Contract Sent</div> :
-                            <button onClick={onReview} className="w-full bg-emerald-600 text-white py-2 rounded-lg text-xs font-bold">Review & Sign</button>
+                            <div className="bg-emerald-50 text-center py-3 rounded-lg text-xs font-bold text-emerald-600 border border-emerald-200">
+                                <i className="fas fa-check mr-1"></i> Contract Active
+                            </div> :
+                            <button onClick={onReview} className="w-full bg-slate-900 text-white py-3 rounded-lg text-xs font-bold shadow-md">Review & Sign Contract</button>
                         }
                     </div>
-                ) : <div className="text-center text-slate-400 text-sm py-10">No pending requests</div>}
+                ) : (
+                    <div className="text-center text-slate-400 text-sm py-10 bg-slate-800 rounded-xl border border-slate-700">No pending requests</div>
+                )}
             </div>
         );
 
@@ -267,62 +279,121 @@
             // Handlers
             const startApp = () => { setSheetOpen(false); setAppStep(1); setView('apply'); };
             const uploadMalaa = () => { setTimeout(() => setAppStep(2), 1000); };
-            const tenantSign = () => { setAppStep(3); alert("Signed! Sent to Landlord."); setView('home'); };
-            const landlordReview = () => { setLSigned(true); alert("Approved & Countersigned!"); };
-            const tenantPay = () => { setTPaid(true); alert("Paid! Contract Active."); };
+            const tenantSign = () => { alert("Offer Sent to Landlord!"); setAppStep(3); setView('home'); };
+            const landlordSign = () => { setLSigned(true); alert("Approved! Tenant notified to pay."); setView('home'); }; // Landlord goes back to dash
+            const tenantPay = () => { setTPaid(true); };
 
             return (
-                <div className="min-h-screen bg-slate-50 flex flex-col">
-                    {/* ROLE SWITCHER */}
-                    <div className="bg-slate-900 text-white text-[10px] p-2 text-center safe-area-top" onClick={() => setRole(r => r==='Tenant'?'Landlord':'Tenant')}>
-                        Current Role: <span className="font-bold text-emerald-400">{role}</span> (Tap to Switch)
-                    </div>
+                <div className={`min-h-screen flex flex-col ${role === 'Landlord' ? 'bg-slate-900' : 'bg-gray-50'}`}>
+                    <Header title={view==='home' ? 'Wathiq.om' : (view==='apply' ? 'New Application' : 'Dashboard')} role={role} onSwitch={() => setRole(r => r==='Tenant'?'Landlord':'Tenant')} />
 
-                    <Header title={view==='home'?'Wathiq.om':(view==='apply'?'Application':'Dashboard')} back={view!=='home'} onBack={() => setView('home')} />
-
-                    <div className="flex-1 overflow-y-auto no-scrollbar">
+                    <div className="flex-1 overflow-y-auto no-scrollbar relative">
                         {role === 'Tenant' && view === 'home' && <TenantHome onPropClick={(p) => { setSelectedP(p); setSheetOpen(true); }} />}
                         
-                        {role === 'Landlord' && (view === 'home' || view === 'landlord_dash') && 
-                            <LandlordDash hasApp={appStep===3} appSigned={l_Signed} onReview={landlordReview} />
-                        }
+                        {role === 'Landlord' && view === 'home' && <LandlordDash hasApp={appStep===3} appSigned={l_Signed} onReview={() => setView('review')} />}
 
-                        {/* TENANT APPLICATION FLOW */}
+                        {/* TENANT: APPLICATION FLOW */}
                         {view === 'apply' && appStep === 1 && (
-                            <div className="p-8 text-center mt-10">
-                                <i className="fas fa-id-card text-5xl text-blue-500 mb-4"></i>
-                                <h2 className="text-xl font-bold mb-2">Verify Identity</h2>
-                                <p className="text-sm text-slate-500 mb-8">Upload Mala'a PDF to auto-fill contract.</p>
-                                <button onClick={uploadMalaa} className="w-full py-3 border-2 border-dashed border-blue-300 text-blue-600 font-bold rounded-xl">Select File</button>
+                            <div className="p-8 text-center mt-20 fade-in">
+                                <div className="w-24 h-24 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6"><i className="fas fa-id-card text-5xl text-blue-500"></i></div>
+                                <h2 className="text-2xl font-bold mb-2">Verify Identity</h2>
+                                <p className="text-sm text-slate-500 mb-10 px-4">Upload your Mala'a Credit Report PDF. We will automatically extract your data and fill the Municipality Contract.</p>
+                                <button onClick={uploadMalaa} className="w-full py-4 border-2 border-dashed border-blue-400 bg-white text-blue-600 font-bold rounded-xl shadow-sm active:scale-95 transition">Tap to Upload PDF</button>
                             </div>
                         )}
 
                         {view === 'apply' && appStep === 2 && (
-                            <div>
-                                <ContractMobile p={selectedP} role="Tenant" autoFill={true} signed={false} onSign={tenantSign} />
-                                <div className="px-4"><button onClick={tenantSign} className="w-full bg-emerald-600 text-white py-3 rounded-xl font-bold shadow">Sign & Send Offer</button></div>
+                            <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-end">
+                                <ContractMobile p={selectedP} role="Tenant" autoFill={true} signed={false} onSign={() => setView('apply_signed')} />
+                            </div>
+                        )}
+                        
+                        {view === 'apply_signed' && (
+                             <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-end">
+                                <ContractMobile p={selectedP} role="Tenant" autoFill={false} signed={true} onSend={tenantSign} />
                             </div>
                         )}
 
-                        {/* ACTIVE CONTRACT VIEW */}
+                        {/* LANDLORD: REVIEW FLOW */}
+                        {view === 'review' && (
+                             <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end">
+                                <ContractMobile p={selectedP} role="Landlord" autoFill={false} signed={false} onSign={() => setView('review_signed')} />
+                            </div>
+                        )}
+                        
+                        {view === 'review_signed' && (
+                             <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end">
+                                <ContractMobile p={selectedP} role="Landlord" autoFill={false} signed={true} onSend={landlordSign} />
+                            </div>
+                        )}
+
+
+                        {/* TENANT: MY APPS & PAYMENT */}
                         {role === 'Tenant' && view === 'apps' && (
-                            <div className="p-4">
-                                <h3 className="font-bold mb-4">My Contracts</h3>
+                            <div className="p-4 pt-6">
+                                <h3 className="font-bold text-xl mb-6">My Applications</h3>
                                 {l_Signed ? (
-                                    <div className="bg-white p-4 rounded-xl border border-emerald-100 shadow-sm relative overflow-hidden">
-                                        {t_Paid && <div className="absolute top-2 right-2 stamp-active text-[10px] font-bold border-2 border-emerald-600 text-emerald-600 p-1 rounded rotate-12">REGISTERED<br/>RD 15/2025</div>}
-                                        <div className="font-bold text-lg mb-1">{selectedP.title}</div>
-                                        <div className="text-xs text-slate-500 mb-4">{l_Signed && !t_Paid ? "Waiting for Payment" : "Active"}</div>
-                                        {!t_Paid ? <button onClick={tenantPay} className="w-full bg-blue-600 text-white py-2 rounded-lg text-xs font-bold">Pay & Activate</button> : <div className="text-center text-xs text-emerald-600 font-bold bg-emerald-50 py-2 rounded">Direct Debit Active</div>}
+                                    <div className="bg-white p-5 rounded-2xl border border-emerald-100 shadow-sm relative overflow-hidden fade-in">
+                                        <div className="flex justify-between items-start mb-4">
+                                            <div>
+                                                <div className="font-bold text-lg">{selectedP.title}</div>
+                                                <div className="text-xs text-slate-500">Contract #WQ-881</div>
+                                            </div>
+                                            {t_Paid && <div className="stamp-active border-2 border-emerald-600 text-emerald-600 text-[8px] font-bold p-1 rounded uppercase text-center rotate-12">Registered<br/>Executive<br/>Instrument</div>}
+                                        </div>
+                                        
+                                        {!t_Paid ? (
+                                            <div className="text-center mt-4">
+                                                <div className="text-sm text-slate-600 mb-4">Contract Approved! Setup Direct Debit to activate.</div>
+                                                <button onClick={tenantPay} className="w-full bg-emerald-600 text-white py-3 rounded-xl font-bold shadow-lg animate-bounce">Pay {selectedP.price} OMR & Activate</button>
+                                            </div>
+                                        ) : (
+                                            <div className="bg-emerald-50 text-emerald-700 p-3 rounded-lg text-center text-xs font-bold border border-emerald-200">
+                                                <i className="fas fa-check-circle mr-1"></i> Active • Direct Debit On
+                                            </div>
+                                        )}
                                     </div>
-                                ) : <div className="text-center text-slate-400 text-sm mt-10">No active contracts</div>}
+                                ) : (
+                                    appStep === 3 ? 
+                                    <div className="bg-white p-6 rounded-2xl text-center border border-yellow-200">
+                                        <div className="font-bold text-slate-700 mb-2">{selectedP.title}</div>
+                                        <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-bold">Waiting for Landlord</span>
+                                    </div> 
+                                    : <div className="text-center text-slate-400 mt-20">No active applications</div>
+                                )}
                             </div>
                         )}
                     </div>
 
-                    {sheetOpen && <PropertySheet p={selectedP} onClose={() => setSheetOpen(false)} onApply={startApp} />}
+                    {sheetOpen && (
+                        <div className="fixed inset-0 z-40 flex flex-col justify-end bg-black/60 backdrop-blur-sm fade-in">
+                            <div onClick={() => setSheetOpen(false)} className="flex-1"></div>
+                            <div className="bg-white rounded-t-3xl p-6 slide-up h-[70vh] overflow-y-auto relative">
+                                <button onClick={() => setSheetOpen(false)} className="absolute top-4 right-4 bg-gray-100 p-2 rounded-full"><i className="fas fa-times"></i></button>
+                                <img src={selectedP.img} className="w-full h-48 object-cover rounded-xl mb-4" />
+                                <div className="flex justify-between items-center mb-4">
+                                    <h2 className="text-2xl font-bold">{selectedP.title}</h2>
+                                    <div className="text-xl font-bold text-emerald-600">{selectedP.price} OMR</div>
+                                </div>
+                                <div className="flex gap-4 mb-6">
+                                    <div className="bg-slate-50 p-3 rounded-lg flex-1 text-center"><div className="font-bold">{selectedP.beds}</div><div className="text-[10px]">Beds</div></div>
+                                    <div className="bg-slate-50 p-3 rounded-lg flex-1 text-center"><div className="font-bold">{selectedP.baths}</div><div className="text-[10px]">Baths</div></div>
+                                    <div className="bg-slate-50 p-3 rounded-lg flex-1 text-center"><div className="font-bold">{selectedP.area}</div><div className="text-[10px]">sqm</div></div>
+                                </div>
+                                <div className="flex items-center gap-3 mb-6 border-t border-b py-4">
+                                    <img src={LANDLORDS[selectedP.landlord].avatar} className="w-10 h-10 rounded-full" />
+                                    <div className="flex-1">
+                                        <div className="font-bold text-sm">{LANDLORDS[selectedP.landlord].name}</div>
+                                        <div className="text-xs text-emerald-600 font-bold">Verified Owner</div>
+                                    </div>
+                                    <div className="text-yellow-500 font-bold text-sm"><i className="fas fa-star"></i> {LANDLORDS[selectedP.landlord].rating}</div>
+                                </div>
+                                <button onClick={startApp} className="w-full bg-slate-900 text-white py-4 rounded-xl font-bold shadow-lg safe-bottom">Apply Now</button>
+                            </div>
+                        </div>
+                    )}
                     
-                    <BottomNav active={view} onNav={(v) => { if(v==='apps' && role==='Landlord') { setView('home'); } else { setView(v); } }} role={role} />
+                    <BottomNav active={view} onNav={(v) => setView(v)} role={role} />
                 </div>
             );
         };

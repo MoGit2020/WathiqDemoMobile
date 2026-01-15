@@ -1,451 +1,434 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.2">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #6d6d6d; -webkit-text-stroke: #6d6d6d; background-color: #ecf1f7}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #6d6d6d; -webkit-text-stroke: #6d6d6d; background-color: #ecf1f7; min-height: 16.0px}
-    span.s1 {font-kerning: none}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Wathiq.om</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Kufi+Arabic:wght@400;700&family=Dancing+Script:wght@700&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', 'Noto Kufi Arabic', sans-serif; -webkit-tap-highlight-color: transparent; }
+        
+        /* Responsive Layout Tweaks */
+        .mobile-sheet {
+            @apply fixed bottom-0 left-0 right-0 bg-white rounded-t-3xl shadow-2xl z-50 transition-transform duration-300 transform translate-y-0 max-h-[90vh] overflow-y-auto;
+        }
+        .desktop-modal {
+            @apply fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm z-50 p-4;
+        }
+        .desktop-modal-content {
+            @apply bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative;
+        }
+
+        /* Animations */
+        .fade-in { animation: fadeIn 0.3s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .slide-up { animation: slideUp 0.3s ease-out; }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+        /* Contract Styling */
+        .paper-texture { background-color: #fff; background-image: radial-gradient(#f1f5f9 1px, transparent 1px); background-size: 20px 20px; }
+        .typewriter { font-family: 'Space Mono', monospace; color: #2563eb; background-color: #eff6ff; padding: 2px 4px; border-radius: 4px; }
+        .signature-font { font-family: 'Dancing Script', cursive; font-size: 1.8rem; }
+        .stamp-active { opacity: 0.9; transform: scale(1) rotate(-12deg); transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+        /* Hide scrollbar for clean UI */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
 </head>
-<body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Wathiq.om&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://unpkg.com/react@18/umd/react.development.js"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://unpkg.com/@babel/standalone/babel.min.js"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Kufi+Arabic:wght@400;700&amp;family=Dancing+Script:wght@700&amp;family=Space+Mono&amp;display=swap" rel="stylesheet"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body { font-family: 'Inter', 'Noto Kufi Arabic', sans-serif; -webkit-tap-highlight-color: transparent; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Responsive Layout Tweaks */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.mobile-sheet {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>@apply fixed bottom-0 left-0 right-0 bg-white rounded-t-3xl shadow-2xl z-50 transition-transform duration-300 transform translate-y-0 max-h-[90vh] overflow-y-auto;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.desktop-modal {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>@apply fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm z-50 p-4;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.desktop-modal-content {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>@apply bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Animations */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.fade-in { animation: fadeIn 0.3s ease-out; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.slide-up { animation: slideUp 0.3s ease-out; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Contract Styling */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.paper-texture { background-color: #fff; background-image: radial-gradient(#f1f5f9 1px, transparent 1px); background-size: 20px 20px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.typewriter { font-family: 'Space Mono', monospace; color: #2563eb; background-color: #eff6ff; padding: 2px 4px; border-radius: 4px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.signature-font { font-family: 'Dancing Script', cursive; font-size: 1.8rem; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.stamp-active { opacity: 0.9; transform: scale(1) rotate(-12deg); transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Hide scrollbar for clean UI */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.no-scrollbar::-webkit-scrollbar { display: none; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body class="bg-gray-50 text-slate-800 h-screen flex flex-col overflow-hidden"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="root" class="h-full flex flex-col"&gt;&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script type="text/babel"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const { useState, useEffect, useRef } = React;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- DATA ---</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const TENANT = { name: "Sara Khan", id: "CV99281", mobile: "99887766", email: "sara.khan@gmail.com", avatar: "https://ui-avatars.com/api/?name=Sara+Khan&amp;background=db2777&amp;color=fff", rating: 4.8, sector: "Private (PDO)", nationality: "Expat" };</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const LANDLORDS = {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>'Ahmed': { name: "Ahmed Al-Harthi", id: "CV111", mobile: "99112233", avatar: "https://ui-avatars.com/api/?name=Ahmed+Harthi&amp;background=0f172a&amp;color=fff", rating: 4.9, verified: true },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>'Salim': { name: "Salim Al-Alawi", id: "CV222", mobile: "99223344", avatar: "https://ui-avatars.com/api/?name=Salim+Alawi&amp;background=1e293b&amp;color=fff", rating: 4.7, verified: true },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>'Said': { name: "Said Al-Mamari", id: "CV333", mobile: "99334455", avatar: "https://ui-avatars.com/api/?name=Said+Mamari&amp;background=334155&amp;color=fff", rating: 4.5, verified: true },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>'Khlfan': { name: "Khlfan Al-Siyabi", id: "CV444", mobile: "99445566", avatar: "https://ui-avatars.com/api/?name=Khlfan+Siyabi&amp;background=475569&amp;color=fff", rating: 4.2, verified: false }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const PROPERTIES = [</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{ id: 1, landlord: 'Ahmed', title: "Sea View 2BHK", price: 600, beds: 2, baths: 3, area: 145, loc: "Al Mouj, Marsa 1", img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&amp;fit=crop&amp;w=800&amp;q=80", type: "Apartment" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{ id: 2, landlord: 'Salim', title: "Muscat Hills Villa", price: 950, beds: 4, baths: 5, area: 350, loc: "Muscat Hills", img: "https://images.unsplash.com/photo-1600596542815-2250651d2116?auto=format&amp;fit=crop&amp;w=800&amp;q=80", type: "Villa" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{ id: 3, landlord: 'Said', title: "Azaiba Studio", price: 300, beds: 1, baths: 1, area: 75, loc: "Azaiba North", img: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&amp;fit=crop&amp;w=800&amp;q=80", type: "Studio" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{ id: 4, landlord: 'Khlfan', title: "Family Apt", price: 450, beds: 3, baths: 3, area: 180, loc: "Bausher Heights", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&amp;fit=crop&amp;w=800&amp;q=80", type: "Apartment" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{ id: 5, landlord: 'Ahmed', title: "Beachfront Villa", price: 1200, beds: 5, baths: 6, area: 450, loc: "Shatti Al Qurum", img: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&amp;fit=crop&amp;w=800&amp;q=80", type: "Villa" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{ id: 6, landlord: 'Salim', title: "City Apt", price: 500, beds: 2, baths: 2, area: 120, loc: "Qurum", img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;w=800&amp;q=80", type: "Apartment" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{ id: 7, landlord: 'Said', title: "Student Flat", price: 250, beds: 1, baths: 1, area: 60, loc: "Al Khoud", img: "https://images.unsplash.com/photo-1502005229766-3c8ef56462b1?auto=format&amp;fit=crop&amp;w=800&amp;q=80", type: "Flat" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{ id: 8, landlord: 'Khlfan', title: "Cozy 2BHK", price: 350, beds: 2, baths: 2, area: 110, loc: "Seeb", img: "https://images.unsplash.com/photo-1484154218962-a1c002085d2f?auto=format&amp;fit=crop&amp;w=800&amp;q=80", type: "House" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{ id: 9, landlord: 'Ahmed', title: "Commercial Space", price: 700, beds: 0, baths: 1, area: 200, loc: "Ruwi CBD", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&amp;fit=crop&amp;w=800&amp;q=80", type: "Office" }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>];</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- COMPONENTS ---</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const Navbar = ({ role, setRole, setView }) =&gt; (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className={`px-4 py-3 flex justify-between items-center shadow-sm z-30 transition-colors duration-500 ${role==='Landlord'?'bg-slate-900 text-white':'bg-white text-slate-800'}`}&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="flex items-center gap-2 font-bold text-lg cursor-pointer" onClick={() =&gt; setView('home')}&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;i className={`fas fa-shield-alt ${role==='Landlord'?'text-blue-500':'text-emerald-500'}`}&gt;&lt;/i&gt; Wathiq.om</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="flex gap-2"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button onClick={() =&gt; setRole('Tenant')} className={`text-[10px] font-bold px-3 py-1 rounded-full border ${role==='Tenant'?'bg-emerald-100 border-emerald-500 text-emerald-700':'border-slate-500 text-slate-400'}`}&gt;Tenant&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button onClick={() =&gt; setRole('Landlord')} className={`text-[10px] font-bold px-3 py-1 rounded-full border ${role==='Landlord'?'bg-blue-900 border-blue-500 text-blue-300':'border-slate-200 text-slate-400'}`}&gt;Landlord&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>);</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const BottomNav = ({ view, setView, role }) =&gt; (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className={`md:hidden fixed bottom-0 w-full border-t flex justify-around items-center pb-6 pt-3 z-30 safe-area-bottom transition-colors duration-500 ${role==='Landlord'?'bg-slate-900 border-slate-800 text-slate-400':'bg-white border-slate-100 text-slate-400'}`}&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button onClick={() =&gt; setView('home')} className={`flex flex-col items-center ${view==='home' ? (role==='Landlord'?'text-blue-400':'text-emerald-600') : ''}`}&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;i className="fas fa-home text-xl mb-1"&gt;&lt;/i&gt;&lt;span className="text-[10px] font-medium"&gt;Home&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button onClick={() =&gt; setView('apps')} className={`flex flex-col items-center ${view==='apps' ? (role==='Landlord'?'text-blue-400':'text-emerald-600') : ''}`}&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;i className={`fas ${role==='Landlord'?'fa-bell':'fa-file-contract'} text-xl mb-1`}&gt;&lt;/i&gt;&lt;span className="text-[10px] font-medium"&gt;{role==='Landlord'?'Requests':'My Apps'}&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button className="flex flex-col items-center opacity-50"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;i className="fas fa-user text-xl mb-1"&gt;&lt;/i&gt;&lt;span className="text-[10px] font-medium"&gt;Profile&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>);</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const PropertyCard = ({ p, onClick, role }) =&gt; (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div onClick={() =&gt; onClick(p)} className={`rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer group ${role==='Landlord'?'bg-slate-800 border border-slate-700':'bg-white border border-slate-100'}`}&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="h-40 relative overflow-hidden"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;img src={p.img} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" /&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="absolute bottom-2 left-2 bg-slate-900/90 text-white px-2 py-1 rounded-md text-xs font-bold"&gt;{p.price} OMR&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{role === 'Tenant' &amp;&amp; &lt;div className="absolute top-2 right-2 bg-white/95 px-2 py-1 rounded-full text-[10px] font-bold text-emerald-700 flex items-center gap-1 shadow"&gt;&lt;i className="fas fa-check-circle"&gt;&lt;/i&gt; Verified&lt;/div&gt;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="p-4"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="flex justify-between items-start mb-2"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;h3 className={`font-bold text-base truncate ${role==='Landlord'?'text-white':'text-slate-800'}`}&gt;{p.title}&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p className="text-xs text-slate-500 truncate"&gt;&lt;i className="fas fa-map-marker-alt mr-1"&gt;&lt;/i&gt; {p.loc}&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="flex justify-between text-xs text-slate-500 border-t border-slate-100/10 pt-3"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span className="flex items-center gap-1"&gt;&lt;i className="fas fa-bed"&gt;&lt;/i&gt; {p.beds}&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span className="flex items-center gap-1"&gt;&lt;i className="fas fa-bath"&gt;&lt;/i&gt; {p.baths}&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span className="flex items-center gap-1"&gt;&lt;i className="fas fa-ruler-combined"&gt;&lt;/i&gt; {p.area}m²&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>);</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- THE DETAILED CONTRACT (Responsive) ---</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const ContractView = ({ p, role, signed, onSign, autoFill, onAction, onClose }) =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const [fields, setFields] = useState({});</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>useEffect(() =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if(autoFill) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const data = {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>l_name: LANDLORDS[p.landlord].name, l_id: "1092882", l_mob: LANDLORDS[p.landlord].mobile,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>t_name: TENANT.name, t_id: TENANT.id, t_mob: TENANT.mobile,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>rent: p.price + " OMR", loc: p.loc, type: p.type,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>elec: "2021-99-11", water: "W-8821"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>};</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>let delay = 300;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>Object.keys(data).forEach(k =&gt; { setTimeout(() =&gt; setFields(prev =&gt; ({...prev, [k]: data[k]})), delay); delay+=150; });</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>} else {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>setFields({<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>l_name: LANDLORDS[p.landlord].name, l_id: "1092882", l_mob: LANDLORDS[p.landlord].mobile,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>t_name: TENANT.name, t_id: TENANT.id, t_mob: TENANT.mobile,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>rent: p.price + " OMR", loc: p.loc, type: p.type,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>elec: "2021-99-11", water: "W-8821"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}, []);</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>return (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="flex flex-col h-full bg-white paper-texture"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="p-4 border-b flex justify-between items-center bg-white sticky top-0 z-10"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div&gt;&lt;h2 className="font-bold text-lg"&gt;Lease Contract&lt;/h2&gt;&lt;div className="text-[10px] text-emerald-600 font-mono"&gt;#WQ-2026-881&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;button onClick={onClose} className="bg-gray-100 p-2 rounded-full hover:bg-gray-200"&gt;&lt;i className="fas fa-times"&gt;&lt;/i&gt;&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="flex-1 overflow-y-auto p-6 space-y-6"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>{/* Header Image */}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="flex justify-between items-center opacity-80 mb-6"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="text-xs font-bold text-center"&gt;SULTANATE OF OMAN&lt;br/&gt;MUSCAT MUNICIPALITY&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Emblem_of_Oman.svg/1200px-Emblem_of_Oman.svg.png" className="h-12" /&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="text-xs font-bold text-center font-arabic"&gt;سلطنة عمان&lt;br/&gt;بلدية مسقط&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>{/* 1. Landlord */}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="border border-slate-300 rounded overflow-hidden"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="bg-slate-100 p-2 text-xs font-bold border-b flex justify-between"&gt;&lt;span&gt;1. LESSOR (LANDLORD)&lt;/span&gt;&lt;span className="font-arabic"&gt;المؤجر&lt;/span&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="p-3 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div&gt;&lt;div className="text-gray-500 uppercase text-[9px]"&gt;Name&lt;/div&gt;&lt;div className={`font-bold ${fields.l_name &amp;&amp; autoFill &amp;&amp; 'typewriter'}`}&gt;{fields.l_name}&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="grid grid-cols-2 gap-2"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div&gt;&lt;div className="text-gray-500 uppercase text-[9px]"&gt;ID No&lt;/div&gt;&lt;div className={`font-bold ${fields.l_id &amp;&amp; autoFill &amp;&amp; 'typewriter'}`}&gt;{fields.l_id}&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div&gt;&lt;div className="text-gray-500 uppercase text-[9px]"&gt;Mobile&lt;/div&gt;&lt;div className={`font-bold ${fields.l_mob &amp;&amp; autoFill &amp;&amp; 'typewriter'}`}&gt;{fields.l_mob}&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>{/* 2. Tenant */}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="border border-blue-200 rounded overflow-hidden"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="bg-blue-50 p-2 text-xs font-bold border-b border-blue-200 flex justify-between items-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;span&gt;2. TENANT (INVESTOR)&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>{autoFill &amp;&amp; &lt;span className="text-[9px] bg-blue-200 text-blue-800 px-2 rounded animate-pulse"&gt;Auto-Filling from Mala'a...&lt;/span&gt;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="p-3 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div&gt;&lt;div className="text-gray-500 uppercase text-[9px]"&gt;Name&lt;/div&gt;&lt;div className={`font-bold ${fields.t_name &amp;&amp; autoFill &amp;&amp; 'typewriter'}`}&gt;{fields.t_name}&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="grid grid-cols-2 gap-2"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div&gt;&lt;div className="text-gray-500 uppercase text-[9px]"&gt;Civil ID&lt;/div&gt;&lt;div className={`font-bold ${fields.t_id &amp;&amp; autoFill &amp;&amp; 'typewriter'}`}&gt;{fields.t_id}&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div&gt;&lt;div className="text-gray-500 uppercase text-[9px]"&gt;Mobile&lt;/div&gt;&lt;div className={`font-bold ${fields.t_mob &amp;&amp; autoFill &amp;&amp; 'typewriter'}`}&gt;{fields.t_mob}&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>{/* 3. Property */}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="border border-slate-300 rounded overflow-hidden"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="bg-slate-100 p-2 text-xs font-bold border-b flex justify-between"&gt;&lt;span&gt;3. LEASED PROPERTY&lt;/span&gt;&lt;span className="font-arabic"&gt;العقار المؤجر&lt;/span&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="p-3 grid grid-cols-2 gap-4 text-xs"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div&gt;&lt;div className="text-gray-500 uppercase text-[9px]"&gt;Location&lt;/div&gt;&lt;div className={`font-bold ${fields.loc &amp;&amp; autoFill &amp;&amp; 'typewriter'}`}&gt;{fields.loc}&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div&gt;&lt;div className="text-gray-500 uppercase text-[9px]"&gt;Type&lt;/div&gt;&lt;div className={`font-bold ${fields.type &amp;&amp; autoFill &amp;&amp; 'typewriter'}`}&gt;{fields.type}&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div&gt;&lt;div className="text-gray-500 uppercase text-[9px]"&gt;Elec Acc&lt;/div&gt;&lt;div className={`font-bold ${fields.elec &amp;&amp; autoFill &amp;&amp; 'typewriter'}`}&gt;{fields.elec}&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div&gt;&lt;div className="text-gray-500 uppercase text-[9px]"&gt;Water Acc&lt;/div&gt;&lt;div className={`font-bold ${fields.water &amp;&amp; autoFill &amp;&amp; 'typewriter'}`}&gt;{fields.water}&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="border-t p-3 bg-emerald-50 flex justify-between items-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;span className="text-xs font-bold text-emerald-800"&gt;AGREED RENT&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;span className={`text-lg font-bold text-emerald-600 ${fields.rent &amp;&amp; autoFill &amp;&amp; 'typewriter'}`}&gt;{fields.rent}&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="p-4 border-t bg-white safe-bottom"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="flex gap-4 mb-4"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="flex-1 text-center p-2 border rounded border-dashed border-slate-300 bg-slate-50"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="text-[9px] uppercase text-slate-400"&gt;Lessor&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>{role==='Landlord' &amp;&amp; !signed ?<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;button onClick={onSign} className="text-xs bg-blue-600 text-white px-3 py-1 rounded mt-1"&gt;Sign&lt;/button&gt; :<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="signature-font text-xl text-slate-800"&gt;{role==='Landlord' &amp;&amp; signed ? LANDLORDS[p.landlord].name : (role==='Tenant' ? LANDLORDS[p.landlord].name : '')}&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="flex-1 text-center p-2 border rounded border-dashed border-blue-200 bg-blue-50"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="text-[9px] uppercase text-blue-400"&gt;Tenant&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>{role==='Tenant' &amp;&amp; !signed ?<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;button onClick={onSign} className="text-xs bg-blue-600 text-white px-3 py-1 rounded mt-1 animate-pulse"&gt;Sign Here&lt;/button&gt; :<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="signature-font text-xl text-blue-600 transform -rotate-3"&gt;{role==='Tenant' &amp;&amp; signed ? TENANT.name : (role==='Landlord' ? TENANT.name : '')}&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>{signed &amp;&amp; (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;button onClick={onAction} className="w-full bg-slate-900 text-white py-3 rounded-xl font-bold shadow-lg"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>{role === 'Tenant' ? 'Submit Offer' : 'Approve &amp; Countersign'}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const PropertyDetails = ({ p, onApply, onClose }) =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const l = LANDLORDS[p.landlord];</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>return (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="h-full flex flex-col bg-white"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="relative h-64 md:h-80"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;img src={p.img} className="w-full h-full object-cover" /&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;button onClick={onClose} className="absolute top-4 right-4 bg-white/50 p-2 rounded-full hover:bg-white transition"&gt;&lt;i className="fas fa-times"&gt;&lt;/i&gt;&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6 pt-20 text-white"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;h2 className="text-2xl font-bold"&gt;{p.title}&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p className="opacity-90"&gt;&lt;i className="fas fa-map-marker-alt"&gt;&lt;/i&gt; {p.loc}&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="flex-1 p-6 overflow-y-auto"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="flex justify-between items-center mb-6"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div&gt;&lt;div className="text-xs text-slate-500 uppercase"&gt;Monthly Rent&lt;/div&gt;&lt;div className="text-2xl font-bold text-emerald-600"&gt;{p.price} OMR&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="flex gap-4 text-center text-slate-600"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div&gt;&lt;i className="fas fa-bed block text-lg mb-1"&gt;&lt;/i&gt;&lt;span className="text-xs font-bold"&gt;{p.beds}&lt;/span&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div&gt;&lt;i className="fas fa-bath block text-lg mb-1"&gt;&lt;/i&gt;&lt;span className="text-xs font-bold"&gt;{p.baths}&lt;/span&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div&gt;&lt;i className="fas fa-ruler block text-lg mb-1"&gt;&lt;/i&gt;&lt;span className="text-xs font-bold"&gt;{p.area}&lt;/span&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="bg-slate-50 p-4 rounded-xl border mb-6 flex items-center gap-3"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;img src={l.avatar} className="w-12 h-12 rounded-full border-2 border-white shadow" /&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="flex-1"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="font-bold text-sm"&gt;{l.name}&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="text-xs text-emerald-600 font-bold"&gt;Verified Owner&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="text-yellow-500 font-bold text-sm"&gt;&lt;i className="fas fa-star"&gt;&lt;/i&gt; {l.rating}&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 className="font-bold mb-2"&gt;Description&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p className="text-sm text-slate-600 leading-relaxed mb-10"&gt;Premium residential unit with modern finishing. Central AC, built-in wardrobes, and covered parking included. Direct access to community pool and gym.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="p-4 border-t safe-bottom"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;button onClick={onApply} className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-bold shadow-lg flex justify-center items-center gap-2"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>Apply &amp; Auto-Fill Contract &lt;i className="fas fa-bolt"&gt;&lt;/i&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const App = () =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const [role, setRole] = useState('Tenant');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const [view, setView] = useState('home');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const [selectedP, setSelectedP] = useState(null);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Flow States</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const [activeSheet, setActiveSheet] = useState(null); // 'details', 'upload', 'contract'</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const [appStep, setAppStep] = useState(0); // 0:None, 1:Pending, 2:Approved, 3:Paid</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const [uploading, setUploading] = useState(false);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const [tenantSigned, setTenantSigned] = useState(false);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const [landlordSigned, setLandlordSigned] = useState(false);</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Handlers</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const openProp = (p) =&gt; { setSelectedP(p); setActiveSheet('details'); };</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const startApply = () =&gt; setActiveSheet('upload');</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const doUpload = () =&gt; {<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>setUploading(true);<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>setTimeout(() =&gt; { setUploading(false); setActiveSheet('contract'); }, 1500);<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const submitOffer = () =&gt; {<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>setAppStep(1); setActiveSheet(null);<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>alert("Offer sent to Landlord!");<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const approveOffer = () =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>setLandlordSigned(true);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>setAppStep(2); setActiveSheet(null);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>alert("Approved! Tenant notified to pay.");</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const payRent = () =&gt; { setAppStep(3); };</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>return (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className={`h-full flex flex-col ${role==='Landlord' ? 'bg-slate-900' : 'bg-gray-50'}`}&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;Navbar role={role} setRole={setRole} setView={setView} /&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="flex-1 overflow-y-auto no-scrollbar relative p-4"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">                        </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>{/* VIEW: HOME */}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>{view === 'home' &amp;&amp; (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>{role === 'Landlord' &amp;&amp; (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="mb-6 p-6 bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl text-white shadow-lg"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;div className="text-xs opacity-75 uppercase font-bold mb-1"&gt;Total Revenue&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;div className="text-3xl font-bold mb-2"&gt;1,200 OMR&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;div className="text-xs bg-white/20 inline-block px-2 py-1 rounded"&gt;100% Occupancy&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>)}</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">                                </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>{role === 'Tenant' &amp;&amp; &lt;h2 className="text-xl font-bold mb-4 text-slate-800"&gt;Featured Homes&lt;/h2&gt;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>{role === 'Landlord' &amp;&amp; &lt;h2 className="text-xl font-bold mb-4 text-white"&gt;Your Portfolio&lt;/h2&gt;}</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">                                </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>{PROPERTIES.map(p =&gt; &lt;PropertyCard key={p.id} p={p} onClick={openProp} role={role} /&gt;)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>)}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>{/* VIEW: APPS / REQUESTS */}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>{view === 'apps' &amp;&amp; (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="max-w-xl mx-auto pt-4"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h2 className={`text-xl font-bold mb-6 ${role==='Landlord'?'text-white':'text-slate-800'}`}&gt;{role==='Landlord'?'Incoming Requests':'My Applications'}&lt;/h2&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">                                </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>{/* EMPTY STATE */}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>{appStep === 0 &amp;&amp; &lt;div className="text-center text-slate-400 py-10"&gt;No active applications.&lt;/div&gt;}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>{/* ACTIVE CARD */}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>{appStep &gt; 0 &amp;&amp; selectedP &amp;&amp; (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="bg-white rounded-xl shadow p-5 border border-slate-200 relative overflow-hidden"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;div className="flex justify-between items-start mb-4"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;div className="flex gap-3"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;img src={selectedP.img} className="w-16 h-16 rounded-lg object-cover" /&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                    </span>&lt;div className="font-bold text-slate-800"&gt;{selectedP.title}&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                    </span>&lt;div className="text-xs text-slate-500"&gt;Contract #WQ-881&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>{/* STAMP */}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>{appStep === 3 &amp;&amp; &lt;div className="absolute top-4 right-4 stamp-active border-2 border-emerald-700 text-emerald-700 text-[9px] font-black uppercase p-1 text-center rotate-12 rounded"&gt;Registered&lt;br/&gt;Executive&lt;br/&gt;Instrument&lt;/div&gt;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>{/* STEPS */}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>{role === 'Tenant' &amp;&amp; (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>{appStep === 1 &amp;&amp; &lt;div className="bg-yellow-50 text-yellow-700 p-2 rounded text-xs font-bold text-center"&gt;Waiting for Landlord Signature&lt;/div&gt;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>{appStep === 2 &amp;&amp; (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                    </span>&lt;div className="text-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                        </span>&lt;div className="text-sm text-emerald-600 font-bold mb-2"&gt;Contract Approved!&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                        </span>&lt;button onClick={payRent} className="w-full bg-emerald-600 text-white py-3 rounded-lg font-bold shadow animate-bounce"&gt;Pay &amp; Activate&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>{appStep === 3 &amp;&amp; &lt;div className="bg-emerald-50 text-emerald-700 p-2 rounded text-xs font-bold text-center"&gt;&lt;i className="fas fa-check-circle"&gt;&lt;/i&gt; Active • Direct Debit On&lt;/div&gt;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>)}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>{role === 'Landlord' &amp;&amp; (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>{appStep === 1 &amp;&amp; (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                    </span>&lt;div className="text-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                        </span>&lt;div className="text-xs text-slate-500 mb-2"&gt;New offer from Sara Khan (Mala'a: 720)&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                        </span>&lt;button onClick={() =&gt; setActiveSheet('contract')} className="w-full bg-blue-600 text-white py-2 rounded-lg text-xs font-bold"&gt;Review &amp; Sign&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>{appStep &gt;= 2 &amp;&amp; &lt;div className="bg-green-50 text-green-700 p-2 rounded text-xs font-bold text-center"&gt;Active • Waiting for Payment&lt;/div&gt;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{/* MODAL / SHEET LOGIC */}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{activeSheet &amp;&amp; (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{/* BACKDROP */}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 fade-in" onClick={() =&gt; setActiveSheet(null)}&gt;&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">                            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{/* SHEET CONTENT */}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="mobile-sheet md:desktop-modal md:bg-transparent md:shadow-none md:pointer-events-none slide-up"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="md:desktop-modal-content md:pointer-events-auto bg-white h-full"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">                                    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>{activeSheet === 'details' &amp;&amp; &lt;PropertyDetails p={selectedP} onApply={startApply} onClose={() =&gt; setActiveSheet(null)} /&gt;}</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">                                    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>{activeSheet === 'upload' &amp;&amp; (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;div className="p-8 text-center h-full flex flex-col justify-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6"&gt;&lt;i className="fas fa-id-card text-4xl text-blue-500"&gt;&lt;/i&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;h2 className="text-2xl font-bold mb-2"&gt;Verification&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;p className="text-slate-500 text-sm mb-8"&gt;Upload your Mala'a Report to auto-fill the contract.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;button onClick={doUpload} disabled={uploading} className="w-full py-4 border-2 border-dashed border-blue-300 text-blue-600 font-bold rounded-xl active:bg-blue-50 transition"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>{uploading ? &lt;i className="fas fa-spinner fa-spin"&gt;&lt;/i&gt; : 'Tap to Upload PDF'}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>)}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>{activeSheet === 'contract' &amp;&amp; (</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;ContractView<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>p={selectedP}<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>role={role}<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>autoFill={role === 'Tenant'} // Only animate for tenant</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>signed={role === 'Tenant' ? tenantSigned : landlordSigned}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>onSign={() =&gt; role === 'Tenant' ? setTenantSigned(true) : setLandlordSigned(true)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>onAction={role === 'Tenant' ? submitOffer : approveOffer}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>onClose={() =&gt; setActiveSheet(null)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>)}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;BottomNav view={view} setView={setView} role={role} /&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const root = ReactDOM.createRoot(document.getElementById('root'));</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>root.render(&lt;App /&gt;);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+<body class="bg-gray-50 text-slate-800 h-screen flex flex-col overflow-hidden">
+    <div id="root" class="h-full flex flex-col"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // --- DATA ---
+        const TENANT = { name: "Sara Khan", id: "CV99281", mobile: "99887766", email: "sara.khan@gmail.com", avatar: "https://ui-avatars.com/api/?name=Sara+Khan&background=db2777&color=fff", rating: 4.8, sector: "Private (PDO)", nationality: "Expat" };
+        const LANDLORDS = {
+            'Ahmed': { name: "Ahmed Al-Harthi", id: "CV111", mobile: "99112233", avatar: "https://ui-avatars.com/api/?name=Ahmed+Harthi&background=0f172a&color=fff", rating: 4.9, verified: true },
+            'Salim': { name: "Salim Al-Alawi", id: "CV222", mobile: "99223344", avatar: "https://ui-avatars.com/api/?name=Salim+Alawi&background=1e293b&color=fff", rating: 4.7, verified: true },
+            'Said': { name: "Said Al-Mamari", id: "CV333", mobile: "99334455", avatar: "https://ui-avatars.com/api/?name=Said+Mamari&background=334155&color=fff", rating: 4.5, verified: true },
+            'Khlfan': { name: "Khlfan Al-Siyabi", id: "CV444", mobile: "99445566", avatar: "https://ui-avatars.com/api/?name=Khlfan+Siyabi&background=475569&color=fff", rating: 4.2, verified: false }
+        };
+        const PROPERTIES = [
+            { id: 1, landlord: 'Ahmed', title: "Sea View 2BHK", price: 600, beds: 2, baths: 3, area: 145, loc: "Al Mouj, Marsa 1", img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80", type: "Apartment" },
+            { id: 2, landlord: 'Salim', title: "Muscat Hills Villa", price: 950, beds: 4, baths: 5, area: 350, loc: "Muscat Hills", img: "https://images.unsplash.com/photo-1600596542815-2250651d2116?auto=format&fit=crop&w=800&q=80", type: "Villa" },
+            { id: 3, landlord: 'Said', title: "Azaiba Studio", price: 300, beds: 1, baths: 1, area: 75, loc: "Azaiba North", img: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80", type: "Studio" },
+            { id: 4, landlord: 'Khlfan', title: "Family Apt", price: 450, beds: 3, baths: 3, area: 180, loc: "Bausher Heights", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80", type: "Apartment" },
+            { id: 5, landlord: 'Ahmed', title: "Beachfront Villa", price: 1200, beds: 5, baths: 6, area: 450, loc: "Shatti Al Qurum", img: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80", type: "Villa" },
+            { id: 6, landlord: 'Salim', title: "City Apt", price: 500, beds: 2, baths: 2, area: 120, loc: "Qurum", img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80", type: "Apartment" },
+            { id: 7, landlord: 'Said', title: "Student Flat", price: 250, beds: 1, baths: 1, area: 60, loc: "Al Khoud", img: "https://images.unsplash.com/photo-1502005229766-3c8ef56462b1?auto=format&fit=crop&w=800&q=80", type: "Flat" },
+            { id: 8, landlord: 'Khlfan', title: "Cozy 2BHK", price: 350, beds: 2, baths: 2, area: 110, loc: "Seeb", img: "https://images.unsplash.com/photo-1484154218962-a1c002085d2f?auto=format&fit=crop&w=800&q=80", type: "House" },
+            { id: 9, landlord: 'Ahmed', title: "Commercial Space", price: 700, beds: 0, baths: 1, area: 200, loc: "Ruwi CBD", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80", type: "Office" }
+        ];
+
+        // --- COMPONENTS ---
+
+        const Navbar = ({ role, setRole, setView }) => (
+            <div className={`px-4 py-3 flex justify-between items-center shadow-sm z-30 transition-colors duration-500 ${role==='Landlord'?'bg-slate-900 text-white':'bg-white text-slate-800'}`}>
+                <div className="flex items-center gap-2 font-bold text-lg cursor-pointer" onClick={() => setView('home')}>
+                    <i className={`fas fa-shield-alt ${role==='Landlord'?'text-blue-500':'text-emerald-500'}`}></i> Wathiq.om
+                </div>
+                <div className="flex gap-2">
+                    <button onClick={() => setRole('Tenant')} className={`text-[10px] font-bold px-3 py-1 rounded-full border ${role==='Tenant'?'bg-emerald-100 border-emerald-500 text-emerald-700':'border-slate-500 text-slate-400'}`}>Tenant</button>
+                    <button onClick={() => setRole('Landlord')} className={`text-[10px] font-bold px-3 py-1 rounded-full border ${role==='Landlord'?'bg-blue-900 border-blue-500 text-blue-300':'border-slate-200 text-slate-400'}`}>Landlord</button>
+                </div>
+            </div>
+        );
+
+        const BottomNav = ({ view, setView, role }) => (
+            <div className={`md:hidden fixed bottom-0 w-full border-t flex justify-around items-center pb-6 pt-3 z-30 safe-area-bottom transition-colors duration-500 ${role==='Landlord'?'bg-slate-900 border-slate-800 text-slate-400':'bg-white border-slate-100 text-slate-400'}`}>
+                <button onClick={() => setView('home')} className={`flex flex-col items-center ${view==='home' ? (role==='Landlord'?'text-blue-400':'text-emerald-600') : ''}`}>
+                    <i className="fas fa-home text-xl mb-1"></i><span className="text-[10px] font-medium">Home</span>
+                </button>
+                <button onClick={() => setView('apps')} className={`flex flex-col items-center ${view==='apps' ? (role==='Landlord'?'text-blue-400':'text-emerald-600') : ''}`}>
+                    <i className={`fas ${role==='Landlord'?'fa-bell':'fa-file-contract'} text-xl mb-1`}></i><span className="text-[10px] font-medium">{role==='Landlord'?'Requests':'My Apps'}</span>
+                </button>
+                <button className="flex flex-col items-center opacity-50">
+                    <i className="fas fa-user text-xl mb-1"></i><span className="text-[10px] font-medium">Profile</span>
+                </button>
+            </div>
+        );
+
+        const PropertyCard = ({ p, onClick, role }) => (
+            <div onClick={() => onClick(p)} className={`rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer group ${role==='Landlord'?'bg-slate-800 border border-slate-700':'bg-white border border-slate-100'}`}>
+                <div className="h-40 relative overflow-hidden">
+                    <img src={p.img} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                    <div className="absolute bottom-2 left-2 bg-slate-900/90 text-white px-2 py-1 rounded-md text-xs font-bold">{p.price} OMR</div>
+                    {role === 'Tenant' && <div className="absolute top-2 right-2 bg-white/95 px-2 py-1 rounded-full text-[10px] font-bold text-emerald-700 flex items-center gap-1 shadow"><i className="fas fa-check-circle"></i> Verified</div>}
+                </div>
+                <div className="p-4">
+                    <div className="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 className={`font-bold text-base truncate ${role==='Landlord'?'text-white':'text-slate-800'}`}>{p.title}</h3>
+                            <p className="text-xs text-slate-500 truncate"><i className="fas fa-map-marker-alt mr-1"></i> {p.loc}</p>
+                        </div>
+                    </div>
+                    <div className="flex justify-between text-xs text-slate-500 border-t border-slate-100/10 pt-3">
+                        <span className="flex items-center gap-1"><i className="fas fa-bed"></i> {p.beds}</span>
+                        <span className="flex items-center gap-1"><i className="fas fa-bath"></i> {p.baths}</span>
+                        <span className="flex items-center gap-1"><i className="fas fa-ruler-combined"></i> {p.area}m²</span>
+                    </div>
+                </div>
+            </div>
+        );
+
+        // --- THE DETAILED CONTRACT (Responsive) ---
+        const ContractView = ({ p, role, signed, onSign, autoFill, onAction, onClose }) => {
+            const [fields, setFields] = useState({});
+            
+            useEffect(() => {
+                if(autoFill) {
+                    const data = {
+                        l_name: LANDLORDS[p.landlord].name, l_id: "1092882", l_mob: LANDLORDS[p.landlord].mobile,
+                        t_name: TENANT.name, t_id: TENANT.id, t_mob: TENANT.mobile,
+                        rent: p.price + " OMR", loc: p.loc, type: p.type,
+                        elec: "2021-99-11", water: "W-8821"
+                    };
+                    let delay = 300;
+                    Object.keys(data).forEach(k => { setTimeout(() => setFields(prev => ({...prev, [k]: data[k]})), delay); delay+=150; });
+                } else {
+                    setFields({ 
+                        l_name: LANDLORDS[p.landlord].name, l_id: "1092882", l_mob: LANDLORDS[p.landlord].mobile,
+                        t_name: TENANT.name, t_id: TENANT.id, t_mob: TENANT.mobile,
+                        rent: p.price + " OMR", loc: p.loc, type: p.type,
+                        elec: "2021-99-11", water: "W-8821"
+                    });
+                }
+            }, []);
+
+            return (
+                <div className="flex flex-col h-full bg-white paper-texture">
+                    <div className="p-4 border-b flex justify-between items-center bg-white sticky top-0 z-10">
+                        <div><h2 className="font-bold text-lg">Lease Contract</h2><div className="text-[10px] text-emerald-600 font-mono">#WQ-2026-881</div></div>
+                        <button onClick={onClose} className="bg-gray-100 p-2 rounded-full hover:bg-gray-200"><i className="fas fa-times"></i></button>
+                    </div>
+                    
+                    <div className="flex-1 overflow-y-auto p-6 space-y-6">
+                        {/* Header Image */}
+                        <div className="flex justify-between items-center opacity-80 mb-6">
+                            <div className="text-xs font-bold text-center">SULTANATE OF OMAN<br/>MUSCAT MUNICIPALITY</div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Emblem_of_Oman.svg/1200px-Emblem_of_Oman.svg.png" className="h-12" />
+                            <div className="text-xs font-bold text-center font-arabic">سلطنة عمان<br/>بلدية مسقط</div>
+                        </div>
+
+                        {/* 1. Landlord */}
+                        <div className="border border-slate-300 rounded overflow-hidden">
+                            <div className="bg-slate-100 p-2 text-xs font-bold border-b flex justify-between"><span>1. LESSOR (LANDLORD)</span><span className="font-arabic">المؤجر</span></div>
+                            <div className="p-3 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                                <div><div className="text-gray-500 uppercase text-[9px]">Name</div><div className={`font-bold ${fields.l_name && autoFill && 'typewriter'}`}>{fields.l_name}</div></div>
+                                <div className="grid grid-cols-2 gap-2">
+                                    <div><div className="text-gray-500 uppercase text-[9px]">ID No</div><div className={`font-bold ${fields.l_id && autoFill && 'typewriter'}`}>{fields.l_id}</div></div>
+                                    <div><div className="text-gray-500 uppercase text-[9px]">Mobile</div><div className={`font-bold ${fields.l_mob && autoFill && 'typewriter'}`}>{fields.l_mob}</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 2. Tenant */}
+                        <div className="border border-blue-200 rounded overflow-hidden">
+                            <div className="bg-blue-50 p-2 text-xs font-bold border-b border-blue-200 flex justify-between items-center">
+                                <span>2. TENANT (INVESTOR)</span>
+                                {autoFill && <span className="text-[9px] bg-blue-200 text-blue-800 px-2 rounded animate-pulse">Auto-Filling from Mala'a...</span>}
+                            </div>
+                            <div className="p-3 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                                <div><div className="text-gray-500 uppercase text-[9px]">Name</div><div className={`font-bold ${fields.t_name && autoFill && 'typewriter'}`}>{fields.t_name}</div></div>
+                                <div className="grid grid-cols-2 gap-2">
+                                    <div><div className="text-gray-500 uppercase text-[9px]">Civil ID</div><div className={`font-bold ${fields.t_id && autoFill && 'typewriter'}`}>{fields.t_id}</div></div>
+                                    <div><div className="text-gray-500 uppercase text-[9px]">Mobile</div><div className={`font-bold ${fields.t_mob && autoFill && 'typewriter'}`}>{fields.t_mob}</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 3. Property */}
+                        <div className="border border-slate-300 rounded overflow-hidden">
+                            <div className="bg-slate-100 p-2 text-xs font-bold border-b flex justify-between"><span>3. LEASED PROPERTY</span><span className="font-arabic">العقار المؤجر</span></div>
+                            <div className="p-3 grid grid-cols-2 gap-4 text-xs">
+                                <div><div className="text-gray-500 uppercase text-[9px]">Location</div><div className={`font-bold ${fields.loc && autoFill && 'typewriter'}`}>{fields.loc}</div></div>
+                                <div><div className="text-gray-500 uppercase text-[9px]">Type</div><div className={`font-bold ${fields.type && autoFill && 'typewriter'}`}>{fields.type}</div></div>
+                                <div><div className="text-gray-500 uppercase text-[9px]">Elec Acc</div><div className={`font-bold ${fields.elec && autoFill && 'typewriter'}`}>{fields.elec}</div></div>
+                                <div><div className="text-gray-500 uppercase text-[9px]">Water Acc</div><div className={`font-bold ${fields.water && autoFill && 'typewriter'}`}>{fields.water}</div></div>
+                            </div>
+                            <div className="border-t p-3 bg-emerald-50 flex justify-between items-center">
+                                <span className="text-xs font-bold text-emerald-800">AGREED RENT</span>
+                                <span className={`text-lg font-bold text-emerald-600 ${fields.rent && autoFill && 'typewriter'}`}>{fields.rent}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="p-4 border-t bg-white safe-bottom">
+                        <div className="flex gap-4 mb-4">
+                            <div className="flex-1 text-center p-2 border rounded border-dashed border-slate-300 bg-slate-50">
+                                <div className="text-[9px] uppercase text-slate-400">Lessor</div>
+                                {role==='Landlord' && !signed ? 
+                                    <button onClick={onSign} className="text-xs bg-blue-600 text-white px-3 py-1 rounded mt-1">Sign</button> : 
+                                    <div className="signature-font text-xl text-slate-800">{role==='Landlord' && signed ? LANDLORDS[p.landlord].name : (role==='Tenant' ? LANDLORDS[p.landlord].name : '')}</div>
+                                }
+                            </div>
+                            <div className="flex-1 text-center p-2 border rounded border-dashed border-blue-200 bg-blue-50">
+                                <div className="text-[9px] uppercase text-blue-400">Tenant</div>
+                                {role==='Tenant' && !signed ? 
+                                    <button onClick={onSign} className="text-xs bg-blue-600 text-white px-3 py-1 rounded mt-1 animate-pulse">Sign Here</button> : 
+                                    <div className="signature-font text-xl text-blue-600 transform -rotate-3">{role==='Tenant' && signed ? TENANT.name : (role==='Landlord' ? TENANT.name : '')}</div>
+                                }
+                            </div>
+                        </div>
+                        {signed && (
+                            <button onClick={onAction} className="w-full bg-slate-900 text-white py-3 rounded-xl font-bold shadow-lg">
+                                {role === 'Tenant' ? 'Submit Offer' : 'Approve & Countersign'}
+                            </button>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+
+        const PropertyDetails = ({ p, onApply, onClose }) => {
+            const l = LANDLORDS[p.landlord];
+            return (
+                <div className="h-full flex flex-col bg-white">
+                    <div className="relative h-64 md:h-80">
+                        <img src={p.img} className="w-full h-full object-cover" />
+                        <button onClick={onClose} className="absolute top-4 right-4 bg-white/50 p-2 rounded-full hover:bg-white transition"><i className="fas fa-times"></i></button>
+                        <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6 pt-20 text-white">
+                            <h2 className="text-2xl font-bold">{p.title}</h2>
+                            <p className="opacity-90"><i className="fas fa-map-marker-alt"></i> {p.loc}</p>
+                        </div>
+                    </div>
+                    <div className="flex-1 p-6 overflow-y-auto">
+                        <div className="flex justify-between items-center mb-6">
+                            <div><div className="text-xs text-slate-500 uppercase">Monthly Rent</div><div className="text-2xl font-bold text-emerald-600">{p.price} OMR</div></div>
+                            <div className="flex gap-4 text-center text-slate-600">
+                                <div><i className="fas fa-bed block text-lg mb-1"></i><span className="text-xs font-bold">{p.beds}</span></div>
+                                <div><i className="fas fa-bath block text-lg mb-1"></i><span className="text-xs font-bold">{p.baths}</span></div>
+                                <div><i className="fas fa-ruler block text-lg mb-1"></i><span className="text-xs font-bold">{p.area}</span></div>
+                            </div>
+                        </div>
+                        <div className="bg-slate-50 p-4 rounded-xl border mb-6 flex items-center gap-3">
+                            <img src={l.avatar} className="w-12 h-12 rounded-full border-2 border-white shadow" />
+                            <div className="flex-1">
+                                <div className="font-bold text-sm">{l.name}</div>
+                                <div className="text-xs text-emerald-600 font-bold">Verified Owner</div>
+                            </div>
+                            <div className="text-yellow-500 font-bold text-sm"><i className="fas fa-star"></i> {l.rating}</div>
+                        </div>
+                        <h3 className="font-bold mb-2">Description</h3>
+                        <p className="text-sm text-slate-600 leading-relaxed mb-10">Premium residential unit with modern finishing. Central AC, built-in wardrobes, and covered parking included. Direct access to community pool and gym.</p>
+                    </div>
+                    <div className="p-4 border-t safe-bottom">
+                        <button onClick={onApply} className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-bold shadow-lg flex justify-center items-center gap-2">
+                            Apply & Auto-Fill Contract <i className="fas fa-bolt"></i>
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
+        const App = () => {
+            const [role, setRole] = useState('Tenant');
+            const [view, setView] = useState('home');
+            const [selectedP, setSelectedP] = useState(null);
+            
+            // Flow States
+            const [activeSheet, setActiveSheet] = useState(null); // 'details', 'upload', 'contract'
+            const [appStep, setAppStep] = useState(0); // 0:None, 1:Pending, 2:Approved, 3:Paid
+            const [uploading, setUploading] = useState(false);
+            const [tenantSigned, setTenantSigned] = useState(false);
+            const [landlordSigned, setLandlordSigned] = useState(false);
+
+            // Handlers
+            const openProp = (p) => { setSelectedP(p); setActiveSheet('details'); };
+            const startApply = () => setActiveSheet('upload');
+            
+            const doUpload = () => { 
+                setUploading(true); 
+                setTimeout(() => { setUploading(false); setActiveSheet('contract'); }, 1500); 
+            };
+            
+            const submitOffer = () => { 
+                setAppStep(1); setActiveSheet(null); 
+                alert("Offer sent to Landlord!"); 
+            };
+
+            const approveOffer = () => {
+                setLandlordSigned(true);
+                setAppStep(2); setActiveSheet(null);
+                alert("Approved! Tenant notified to pay.");
+            };
+
+            const payRent = () => { setAppStep(3); };
+
+            return (
+                <div className={`h-full flex flex-col ${role==='Landlord' ? 'bg-slate-900' : 'bg-gray-50'}`}>
+                    <Navbar role={role} setRole={setRole} setView={setView} />
+
+                    <div className="flex-1 overflow-y-auto no-scrollbar relative p-4">
+                        
+                        {/* VIEW: HOME */}
+                        {view === 'home' && (
+                            <>
+                                {role === 'Landlord' && (
+                                    <div className="mb-6 p-6 bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl text-white shadow-lg">
+                                        <div className="text-xs opacity-75 uppercase font-bold mb-1">Total Revenue</div>
+                                        <div className="text-3xl font-bold mb-2">1,200 OMR</div>
+                                        <div className="text-xs bg-white/20 inline-block px-2 py-1 rounded">100% Occupancy</div>
+                                    </div>
+                                )}
+                                
+                                {role === 'Tenant' && <h2 className="text-xl font-bold mb-4 text-slate-800">Featured Homes</h2>}
+                                {role === 'Landlord' && <h2 className="text-xl font-bold mb-4 text-white">Your Portfolio</h2>}
+                                
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
+                                    {PROPERTIES.map(p => <PropertyCard key={p.id} p={p} onClick={openProp} role={role} />)}
+                                </div>
+                            </>
+                        )}
+
+                        {/* VIEW: APPS / REQUESTS */}
+                        {view === 'apps' && (
+                            <div className="max-w-xl mx-auto pt-4">
+                                <h2 className={`text-xl font-bold mb-6 ${role==='Landlord'?'text-white':'text-slate-800'}`}>{role==='Landlord'?'Incoming Requests':'My Applications'}</h2>
+                                
+                                {/* EMPTY STATE */}
+                                {appStep === 0 && <div className="text-center text-slate-400 py-10">No active applications.</div>}
+
+                                {/* ACTIVE CARD */}
+                                {appStep > 0 && selectedP && (
+                                    <div className="bg-white rounded-xl shadow p-5 border border-slate-200 relative overflow-hidden">
+                                        <div className="flex justify-between items-start mb-4">
+                                            <div className="flex gap-3">
+                                                <img src={selectedP.img} className="w-16 h-16 rounded-lg object-cover" />
+                                                <div>
+                                                    <div className="font-bold text-slate-800">{selectedP.title}</div>
+                                                    <div className="text-xs text-slate-500">Contract #WQ-881</div>
+                                                </div>
+                                            </div>
+                                            {/* STAMP */}
+                                            {appStep === 3 && <div className="absolute top-4 right-4 stamp-active border-2 border-emerald-700 text-emerald-700 text-[9px] font-black uppercase p-1 text-center rotate-12 rounded">Registered<br/>Executive<br/>Instrument</div>}
+                                        </div>
+
+                                        {/* STEPS */}
+                                        {role === 'Tenant' && (
+                                            <>
+                                                {appStep === 1 && <div className="bg-yellow-50 text-yellow-700 p-2 rounded text-xs font-bold text-center">Waiting for Landlord Signature</div>}
+                                                {appStep === 2 && (
+                                                    <div className="text-center">
+                                                        <div className="text-sm text-emerald-600 font-bold mb-2">Contract Approved!</div>
+                                                        <button onClick={payRent} className="w-full bg-emerald-600 text-white py-3 rounded-lg font-bold shadow animate-bounce">Pay & Activate</button>
+                                                    </div>
+                                                )}
+                                                {appStep === 3 && <div className="bg-emerald-50 text-emerald-700 p-2 rounded text-xs font-bold text-center"><i className="fas fa-check-circle"></i> Active • Direct Debit On</div>}
+                                            </>
+                                        )}
+
+                                        {role === 'Landlord' && (
+                                            <>
+                                                {appStep === 1 && (
+                                                    <div className="text-center">
+                                                        <div className="text-xs text-slate-500 mb-2">New offer from Sara Khan (Mala'a: 720)</div>
+                                                        <button onClick={() => setActiveSheet('contract')} className="w-full bg-blue-600 text-white py-2 rounded-lg text-xs font-bold">Review & Sign</button>
+                                                    </div>
+                                                )}
+                                                {appStep >= 2 && <div className="bg-green-50 text-green-700 p-2 rounded text-xs font-bold text-center">Active • Waiting for Payment</div>}
+                                            </>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                    </div>
+
+                    {/* MODAL / SHEET LOGIC */}
+                    {activeSheet && (
+                        <>
+                            {/* BACKDROP */}
+                            <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 fade-in" onClick={() => setActiveSheet(null)}></div>
+                            
+                            {/* SHEET CONTENT */}
+                            <div className="mobile-sheet md:desktop-modal md:bg-transparent md:shadow-none md:pointer-events-none slide-up">
+                                <div className="md:desktop-modal-content md:pointer-events-auto bg-white h-full">
+                                    
+                                    {activeSheet === 'details' && <PropertyDetails p={selectedP} onApply={startApply} onClose={() => setActiveSheet(null)} />}
+                                    
+                                    {activeSheet === 'upload' && (
+                                        <div className="p-8 text-center h-full flex flex-col justify-center">
+                                            <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6"><i className="fas fa-id-card text-4xl text-blue-500"></i></div>
+                                            <h2 className="text-2xl font-bold mb-2">Verification</h2>
+                                            <p className="text-slate-500 text-sm mb-8">Upload your Mala'a Report to auto-fill the contract.</p>
+                                            <button onClick={doUpload} disabled={uploading} className="w-full py-4 border-2 border-dashed border-blue-300 text-blue-600 font-bold rounded-xl active:bg-blue-50 transition">
+                                                {uploading ? <i className="fas fa-spinner fa-spin"></i> : 'Tap to Upload PDF'}
+                                            </button>
+                                        </div>
+                                    )}
+
+                                    {activeSheet === 'contract' && (
+                                        <ContractView 
+                                            p={selectedP} 
+                                            role={role} 
+                                            autoFill={role === 'Tenant'} // Only animate for tenant
+                                            signed={role === 'Tenant' ? tenantSigned : landlordSigned}
+                                            onSign={() => role === 'Tenant' ? setTenantSigned(true) : setLandlordSigned(true)}
+                                            onAction={role === 'Tenant' ? submitOffer : approveOffer}
+                                            onClose={() => setActiveSheet(null)}
+                                        />
+                                    )}
+                                </div>
+                            </div>
+                        </>
+                    )}
+
+                    <BottomNav view={view} setView={setView} role={role} />
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
 </body>
 </html>

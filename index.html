@@ -36,7 +36,7 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        // --- DATA (Matches Desktop V17) ---
+        // --- DATA (Synced with Desktop V17) ---
         const TENANT = { 
             name: "Sara Khan", id: "CV99281", mobile: "99887766", email: "sara.khan@gmail.com", 
             avatar: "https://ui-avatars.com/api/?name=Sara+Khan&background=db2777&color=fff",
@@ -53,9 +53,12 @@
             { id: 1, landlord: 'Ahmed', title: "Sea View 2BHK", price: 600, beds: 2, baths: 3, area: 145, loc: "Al Mouj", img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80", type: "Apt" },
             { id: 2, landlord: 'Salim', title: "Muscat Hills Villa", price: 950, beds: 4, baths: 5, area: 350, loc: "Muscat Hills", img: "https://images.unsplash.com/photo-1600596542815-2250651d2116?auto=format&fit=crop&w=800&q=80", type: "Villa" },
             { id: 3, landlord: 'Said', title: "Azaiba Studio", price: 300, beds: 1, baths: 1, area: 75, loc: "Azaiba", img: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80", type: "Studio" },
-            { id: 4, landlord: 'Khlfan', title: "Family Apt - Bausher", price: 450, beds: 3, baths: 3, area: 180, loc: "Bausher Heights", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80", type: "Apartment" },
-            { id: 5, landlord: 'Ahmed', title: "Beachfront Villa - Shatti", price: 1200, beds: 5, baths: 6, area: 450, loc: "Shatti Al Qurum", img: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80", type: "Villa" },
-            { id: 6, landlord: 'Salim', title: "City Apt - Qurum", price: 500, beds: 2, baths: 2, area: 120, loc: "Qurum Commercial Area", img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80", type: "Apartment" }
+            { id: 4, landlord: 'Khlfan', title: "Family Apt", price: 450, beds: 3, baths: 3, area: 180, loc: "Bausher Heights", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80", type: "Apartment" },
+            { id: 5, landlord: 'Ahmed', title: "Beachfront Villa", price: 1200, beds: 5, baths: 6, area: 450, loc: "Shatti Al Qurum", img: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80", type: "Villa" },
+            { id: 6, landlord: 'Salim', title: "City Apt", price: 500, beds: 2, baths: 2, area: 120, loc: "Qurum", img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80", type: "Apartment" },
+            { id: 7, landlord: 'Said', title: "Student Flat", price: 250, beds: 1, baths: 1, area: 60, loc: "Al Khoud", img: "https://images.unsplash.com/photo-1502005229766-3c8ef56462b1?auto=format&fit=crop&w=800&q=80", type: "Flat" },
+            { id: 8, landlord: 'Khlfan', title: "Cozy 2BHK", price: 350, beds: 2, baths: 2, area: 110, loc: "Seeb", img: "https://images.unsplash.com/photo-1484154218962-a1c002085d2f?auto=format&fit=crop&w=800&q=80", type: "House" },
+            { id: 9, landlord: 'Ahmed', title: "Commercial Space", price: 700, beds: 0, baths: 1, area: 200, loc: "Ruwi CBD", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80", type: "Office" }
         ];
 
         // --- COMPONENTS ---
@@ -94,7 +97,7 @@
                     <div className="p-4">
                         <div className="flex justify-between items-start mb-1">
                             <div>
-                                <h3 className="font-bold text-base">{p.title}</h3>
+                                <h3 className="font-bold text-base mb-1">{p.title}</h3>
                                 <p className="text-xs text-slate-500 mb-2"><i className="fas fa-map-marker-alt mr-1"></i> {p.loc}</p>
                             </div>
                             <div className="flex items-center gap-1 text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded-full">
@@ -158,19 +161,12 @@
                         </div>
 
                         <h3 className="font-bold mb-2">Description</h3>
-                        <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                        <p className="text-sm text-slate-600 leading-relaxed mb-20">
                             Modern luxury apartment with full sea views. Features a fully equipped kitchen, large balcony, and maid's room. Building amenities include a swimming pool, gym, and 24/7 security.
                         </p>
-
-                        <h3 className="font-bold mb-2">Location</h3>
-                        <div className="bg-slate-200 h-32 rounded-xl flex items-center justify-center text-slate-400 mb-20">
-                            Map View Placeholder
-                        </div>
                     </div>
                     <div className="absolute bottom-0 w-full bg-white border-t p-4 safe-area-bottom">
-                        <button onClick={onApply} className="w-full bg-emerald-600 text-white py-3.5 rounded-xl font-bold shadow-lg flex items-center justify-center gap-2">
-                            Apply & Rent Now <i className="fas fa-arrow-right"></i>
-                        </button>
+                        <button onClick={onApply} className="w-full bg-emerald-600 text-white py-3 rounded-xl font-bold shadow-lg">Apply & Verify</button>
                     </div>
                 </div>
             </div>
@@ -196,7 +192,7 @@
             return (
                 <div className="bg-white p-4 rounded-xl border border-slate-200 text-sm shadow-sm m-4 mb-20">
                     <div className="text-center border-b pb-4 mb-4">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Emblem_of_Oman.svg/1200px-Emblem_of_Oman.svg.png" className="h-12 mx-auto opacity-80" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Emblem_of_Oman.svg/1200px-Emblem_of_Oman.svg.png" className="h-10 mx-auto opacity-80" />
                         <h3 className="font-bold mt-2">MUNICIPALITY CONTRACT</h3>
                         <div className="text-xs text-emerald-600 font-mono">#WQ-2026-881</div>
                     </div>
@@ -204,7 +200,7 @@
                         <div><span className="mm-label">Landlord (Lessor)</span><div className={`mm-input ${fields.l_name && autoFill && 'typing'}`}>{fields.l_name}</div></div>
                         <div><span className="mm-label">Tenant</span><div className={`mm-input ${fields.t_name && autoFill && 'typing'}`}>{fields.t_name}</div></div>
                         <div className="grid grid-cols-2 gap-2">
-                            <div><span className="mm-label">Rent Value</span><div className={`mm-input font-bold text-emerald-600 ${fields.rent && autoFill && 'typing'}`}>{fields.rent}</div></div>
+                            <div><span className="mm-label">Rent Value</span><div className={`mm-input font-bold ${fields.rent && autoFill && 'typing'}`}>{fields.rent}</div></div>
                             <div><span className="mm-label">Location</span><div className={`mm-input ${fields.loc && autoFill && 'typing'}`}>{fields.loc}</div></div>
                         </div>
                     </div>
@@ -212,7 +208,7 @@
                         <div className="text-xs text-slate-400 uppercase font-bold mb-2">{role} Signature</div>
                         {signed ? 
                             <span className="signature-font text-blue-600 text-xl">{role==='Tenant'?TENANT.name:LANDLORDS[p.landlord].name}</span> :
-                            <button onClick={onSign} className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold text-sm animate-pulse shadow-lg">Tap to Sign</button>
+                            <button onClick={onSign} className="w-full bg-blue-600 text-white py-2 rounded-lg font-bold text-xs animate-pulse">Tap to Sign</button>
                         }
                     </div>
                 </div>
@@ -224,7 +220,7 @@
         const TenantHome = ({ onPropClick }) => (
             <div className="p-4 pb-24">
                 <div className="flex gap-2 overflow-x-auto pb-4 no-scrollbar">
-                    <div className="bg-emerald-600 text-white px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap shadow-sm">All Properties</div>
+                    <div className="bg-emerald-600 text-white px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap">All Properties</div>
                     <div className="bg-white border px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap">Al Mouj</div>
                     <div className="bg-white border px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap">Muscat Hills</div>
                 </div>
@@ -244,7 +240,7 @@
                     <div className="bg-white p-4 rounded-xl border border-blue-100 shadow-sm relative overflow-hidden">
                         <div className="absolute top-0 right-0 bg-blue-500 text-white text-[10px] px-2 py-1 rounded-bl font-bold">NEW</div>
                         <div className="flex gap-3 items-center mb-3">
-                            <img src={TENANT.avatar} className="w-12 h-12 rounded-full border-2 border-white shadow-sm" />
+                            <img src={TENANT.avatar} className="w-10 h-10 rounded-full" />
                             <div>
                                 <div className="font-bold text-sm">{TENANT.name}</div>
                                 <div className="text-xs text-emerald-600 font-bold">Mala'a: 720</div>
@@ -252,7 +248,7 @@
                         </div>
                         {appSigned ? 
                             <div className="bg-gray-100 text-center py-2 rounded text-xs font-bold text-gray-500">Contract Sent</div> :
-                            <button onClick={onReview} className="w-full bg-emerald-600 text-white py-2 rounded-lg text-xs font-bold shadow-sm">Review & Sign</button>
+                            <button onClick={onReview} className="w-full bg-emerald-600 text-white py-2 rounded-lg text-xs font-bold">Review & Sign</button>
                         }
                     </div>
                 ) : <div className="text-center text-slate-400 text-sm py-10">No pending requests</div>}
@@ -297,14 +293,14 @@
                                 <i className="fas fa-id-card text-5xl text-blue-500 mb-4"></i>
                                 <h2 className="text-xl font-bold mb-2">Verify Identity</h2>
                                 <p className="text-sm text-slate-500 mb-8">Upload Mala'a PDF to auto-fill contract.</p>
-                                <button onClick={uploadMalaa} className="w-full py-3.5 border-2 border-dashed border-blue-300 text-blue-600 font-bold rounded-xl active:bg-blue-50 transition">Select File</button>
+                                <button onClick={uploadMalaa} className="w-full py-3 border-2 border-dashed border-blue-300 text-blue-600 font-bold rounded-xl">Select File</button>
                             </div>
                         )}
 
                         {view === 'apply' && appStep === 2 && (
                             <div>
                                 <ContractMobile p={selectedP} role="Tenant" autoFill={true} signed={false} onSign={tenantSign} />
-                                <div className="px-4 pb-20"><button onClick={tenantSign} className="w-full bg-emerald-600 text-white py-3.5 rounded-xl font-bold shadow-lg">Sign & Send Offer</button></div>
+                                <div className="px-4"><button onClick={tenantSign} className="w-full bg-emerald-600 text-white py-3 rounded-xl font-bold shadow">Sign & Send Offer</button></div>
                             </div>
                         )}
 
@@ -314,7 +310,7 @@
                                 <h3 className="font-bold mb-4">My Contracts</h3>
                                 {l_Signed ? (
                                     <div className="bg-white p-4 rounded-xl border border-emerald-100 shadow-sm relative overflow-hidden">
-                                        {t_Paid && <div className="absolute top-2 right-2 stamp-active text-[8px] font-bold border border-emerald-600 text-emerald-600 p-1 rounded rotate-12 bg-white">REGISTERED<br/>RD 15/2025</div>}
+                                        {t_Paid && <div className="absolute top-2 right-2 stamp-active text-[10px] font-bold border-2 border-emerald-600 text-emerald-600 p-1 rounded rotate-12">REGISTERED<br/>RD 15/2025</div>}
                                         <div className="font-bold text-lg mb-1">{selectedP.title}</div>
                                         <div className="text-xs text-slate-500 mb-4">{l_Signed && !t_Paid ? "Waiting for Payment" : "Active"}</div>
                                         {!t_Paid ? <button onClick={tenantPay} className="w-full bg-blue-600 text-white py-2 rounded-lg text-xs font-bold">Pay & Activate</button> : <div className="text-center text-xs text-emerald-600 font-bold bg-emerald-50 py-2 rounded">Direct Debit Active</div>}

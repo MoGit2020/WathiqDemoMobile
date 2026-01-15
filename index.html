@@ -1,327 +1,293 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.2">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #6d6d6d; -webkit-text-stroke: #6d6d6d}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #6b0001; -webkit-text-stroke: #6b0001}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #fb0007; -webkit-text-stroke: #fb0007}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #0000ff; -webkit-text-stroke: #0000ff}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; -webkit-text-stroke: #000000}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #093c94; -webkit-text-stroke: #093c94}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; -webkit-text-stroke: #000000; min-height: 16.0px}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #4d5055; -webkit-text-stroke: #4d5055}
-    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #137646; -webkit-text-stroke: #137646}
-    span.s1 {font-kerning: none; background-color: #ecf1f7}
-    span.s2 {font-kerning: none; color: #fb0007; background-color: #ecf1f7; -webkit-text-stroke: 0px #fb0007}
-    span.s3 {font-kerning: none; color: #2a2a2a; background-color: #ecf1f7; -webkit-text-stroke: 0px #2a2a2a}
-    span.s4 {font-kerning: none; color: #000000; background-color: #ecf1f7; -webkit-text-stroke: 0px #000000}
-    span.s5 {font-kerning: none; color: #0000ff; background-color: #ecf1f7; -webkit-text-stroke: 0px #0000ff}
-    span.s6 {font-kerning: none; color: #6b0001; background-color: #ecf1f7; -webkit-text-stroke: 0px #6b0001}
-    span.s7 {font-kerning: none; color: #18702b; background-color: #ecf1f7; -webkit-text-stroke: 0px #18702b}
-    span.s8 {font-kerning: none; color: #093c94; background-color: #ecf1f7; -webkit-text-stroke: 0px #093c94}
-    span.s9 {font-kerning: none; color: #137646; background-color: #ecf1f7; -webkit-text-stroke: 0px #137646}
-    span.s10 {font-kerning: none; color: #6f0ec3; background-color: #ecf1f7; -webkit-text-stroke: 0px #6f0ec3}
-    span.s11 {font-kerning: none}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Wathiq.om Mobile</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Kufi+Arabic:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', 'Noto Kufi Arabic', sans-serif; background-color: #f3f4f6; -webkit-tap-highlight-color: transparent; }
+        .slide-up { animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.3s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        /* Mobile Specifics */
+        .safe-area-bottom { padding-bottom: env(safe-area-inset-bottom); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .mm-input { width: 100%; border: 1px solid #e2e8f0; padding: 8px; font-size: 13px; background: #fff; color: #334155; border-radius: 8px; height: 36px; }
+        .mm-label { font-size: 11px; font-weight: 600; color: #64748b; text-transform: uppercase; display: block; margin-bottom: 4px; }
+        .typing { background-color: #f0fdf4; border-color: #4ade80; transition: background 0.3s; }
+        .signature-font { font-family: 'Dancing Script', cursive; font-size: 1.5rem; }
+        .stamp-active { opacity: 0.9; transform: scale(1) rotate(-12deg); transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    </style>
 </head>
-<body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE</span><span class="s2"> html</span><span class="s1">&gt;</span></p>
-<p class="p2"><span class="s3">&lt;</span><span class="s1">html</span><span class="s4"> </span><span class="s2">lang</span><span class="s3">=</span><span class="s5">"en"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s3">&lt;</span><span class="s1">head</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">meta</span><span class="s4"> </span><span class="s1">charset</span><span class="s3">=</span><span class="s5">"UTF-8"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">meta</span><span class="s4"> </span><span class="s2">name</span><span class="s3">=</span><span class="s1">"viewport"</span><span class="s4"> </span><span class="s2">content</span><span class="s3">=</span><span class="s1">"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">title</span><span class="s3">&gt;</span><span class="s1">Wathiq.om Mobile</span><span class="s3">&lt;/</span><span class="s6">title</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://unpkg.com/react@18/umd/react.development.js"</span><span class="s3">&gt;&lt;/</span><span class="s6">script</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://unpkg.com/react-dom@18/umd/react-dom.development.js"</span><span class="s3">&gt;&lt;/</span><span class="s6">script</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://unpkg.com/@babel/standalone/babel.min.js"</span><span class="s3">&gt;&lt;/</span><span class="s6">script</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://cdn.tailwindcss.com"</span><span class="s3">&gt;&lt;/</span><span class="s6">script</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://cdn.jsdelivr.net/npm/chart.js"</span><span class="s3">&gt;&lt;/</span><span class="s6">script</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">link</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"</span><span class="s4"> </span><span class="s2">rel</span><span class="s3">=</span><span class="s1">"stylesheet"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">link</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Kufi+Arabic:wght@400;700&amp;family=Dancing+Script:wght@700&amp;display=swap"</span><span class="s4"> </span><span class="s2">rel</span><span class="s3">=</span><span class="s1">"stylesheet"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s1">style</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s6">body</span><span class="s4"> { </span><span class="s1">font-family:</span><span class="s4"> </span><span class="s7">'Inter'</span><span class="s4">, </span><span class="s7">'Noto Kufi Arabic'</span><span class="s4">, </span><span class="s8">sans-serif</span><span class="s4">; </span><span class="s1">background-color:</span><span class="s4"> </span><span class="s8">#f3f4f6</span><span class="s4">; </span><span class="s1">-webkit-tap-highlight-color:</span><span class="s4"> </span><span class="s8">transparent</span><span class="s4">; }</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">.slide-up</span><span class="s1"> { </span><span class="s2">animation:</span><span class="s1"> </span><span class="s8">slideUp</span><span class="s1"> </span><span class="s9">0.3s</span><span class="s1"> </span><span class="s8">cubic-bezier(</span><span class="s9">0.16</span><span class="s1">, </span><span class="s9">1</span><span class="s1">, </span><span class="s9">0.3</span><span class="s1">, </span><span class="s9">1</span><span class="s8">)</span><span class="s1">; }</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s10">@keyframes</span><span class="s4"> </span><span class="s1">slideUp</span><span class="s4"> { </span><span class="s1">from</span><span class="s4"> { </span><span class="s2">transform:</span><span class="s4"> </span><span class="s1">translateY(</span><span class="s9">100%</span><span class="s1">)</span><span class="s4">; } </span><span class="s1">to</span><span class="s4"> { </span><span class="s2">transform:</span><span class="s4"> </span><span class="s1">translateY(</span><span class="s9">0</span><span class="s1">)</span><span class="s4">; } }</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">.fade-in</span><span class="s1"> { </span><span class="s2">animation:</span><span class="s1"> </span><span class="s8">fadeIn</span><span class="s1"> </span><span class="s9">0.3s</span><span class="s1"> </span><span class="s8">ease-out</span><span class="s1">; }</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">@keyframes</span><span class="s1"> </span><span class="s8">fadeIn</span><span class="s1"> { </span><span class="s8">from</span><span class="s1"> { </span><span class="s2">opacity:</span><span class="s1"> </span><span class="s9">0</span><span class="s1">; } </span><span class="s8">to</span><span class="s1"> { </span><span class="s2">opacity:</span><span class="s1"> </span><span class="s9">1</span><span class="s1">; } }</span></p>
-<p class="p7"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p8"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">/* Mobile Specifics */</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s6">.safe-area-bottom</span><span class="s4"> { </span><span class="s2">padding-bottom:</span><span class="s4"> </span><span class="s1">env(safe-area-inset-bottom)</span><span class="s4">; }</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.no-scrollbar::-webkit-scrollbar</span><span class="s4"> { </span><span class="s2">display:</span><span class="s4"> </span><span class="s8">none</span><span class="s4">; }</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s6">.no-scrollbar</span><span class="s4"> { </span><span class="s1">-ms-overflow-style:</span><span class="s4"> </span><span class="s8">none</span><span class="s4">; </span><span class="s1">scrollbar-width:</span><span class="s4"> </span><span class="s8">none</span><span class="s4">; }</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s6">.mm-input</span><span class="s4"> { </span><span class="s1">width:</span><span class="s4"> </span><span class="s9">100%</span><span class="s4">; </span><span class="s1">border:</span><span class="s4"> </span><span class="s9">1px</span><span class="s4"> </span><span class="s8">solid</span><span class="s4"> </span><span class="s8">#e2e8f0</span><span class="s4">; </span><span class="s1">padding:</span><span class="s4"> </span><span class="s9">8px</span><span class="s4">; </span><span class="s1">font-size:</span><span class="s4"> </span><span class="s9">13px</span><span class="s4">; </span><span class="s1">background:</span><span class="s4"> </span><span class="s8">#fff</span><span class="s4">; </span><span class="s1">color:</span><span class="s4"> </span><span class="s8">#334155</span><span class="s4">; </span><span class="s1">border-radius:</span><span class="s4"> </span><span class="s9">8px</span><span class="s4">; </span><span class="s1">height:</span><span class="s4"> </span><span class="s9">36px</span><span class="s4">; }</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s6">.mm-label</span><span class="s4"> { </span><span class="s1">font-size:</span><span class="s4"> </span><span class="s9">11px</span><span class="s4">; </span><span class="s1">font-weight:</span><span class="s4"> </span><span class="s9">600</span><span class="s4">; </span><span class="s1">color:</span><span class="s4"> </span><span class="s8">#64748b</span><span class="s4">; </span><span class="s1">text-transform:</span><span class="s4"> </span><span class="s8">uppercase</span><span class="s4">; </span><span class="s1">display:</span><span class="s4"> </span><span class="s8">block</span><span class="s4">; </span><span class="s1">margin-bottom:</span><span class="s4"> </span><span class="s9">4px</span><span class="s4">; }</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s6">.typing</span><span class="s4"> { </span><span class="s1">background-color:</span><span class="s4"> </span><span class="s8">#f0fdf4</span><span class="s4">; </span><span class="s1">border-color:</span><span class="s4"> </span><span class="s8">#4ade80</span><span class="s4">; </span><span class="s1">transition:</span><span class="s4"> </span><span class="s8">background</span><span class="s4"> </span><span class="s9">0.3s</span><span class="s4">; }</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s6">.signature-font</span><span class="s4"> { </span><span class="s1">font-family:</span><span class="s4"> </span><span class="s7">'Dancing Script'</span><span class="s4">, </span><span class="s8">cursive</span><span class="s4">; </span><span class="s1">font-size:</span><span class="s4"> </span><span class="s9">1.5rem</span><span class="s4">; }</span></p>
-<p class="p9"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s6">.stamp-active</span><span class="s4"> { </span><span class="s2">opacity:</span><span class="s4"> </span><span class="s1">0.9</span><span class="s4">; </span><span class="s2">transform:</span><span class="s4"> </span><span class="s8">scale(</span><span class="s1">1</span><span class="s8">)</span><span class="s4"> </span><span class="s8">rotate(</span><span class="s1">-12deg</span><span class="s8">)</span><span class="s4">; </span><span class="s2">transition:</span><span class="s4"> </span><span class="s8">all</span><span class="s4"> </span><span class="s1">0.5s</span><span class="s4"> </span><span class="s8">cubic-bezier(</span><span class="s1">0.175</span><span class="s4">, </span><span class="s1">0.885</span><span class="s4">, </span><span class="s1">0.32</span><span class="s4">, </span><span class="s1">1.275</span><span class="s8">)</span><span class="s4">; }</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">style</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s3">&lt;/</span><span class="s1">head</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s3">&lt;</span><span class="s6">body</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-gray-100 text-slate-800"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"root"</span><span class="s3">&gt;&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">type</span><span class="s3">=</span><span class="s1">"text/babel"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const { useState, useEffect, useRef } = React;</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// --- DATA (Same as V17) ---</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const TENANT = {<span class="Apple-converted-space"> </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>name: "Sara Khan", id: "CV99281", mobile: "99887766", email: "sara.khan@gmail.com",<span class="Apple-converted-space"> </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>avatar: "https://ui-avatars.com/api/?name=Sara+Khan&amp;background=db2777&amp;color=fff",</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>rating: 4.8, sector: "Private Sector", nationality: "Expat",</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>reviews: [{ user: "Landlord X", comment: "Paid on time." }]</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const LANDLORDS = {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>'Ahmed': { name: "Ahmed Al-Harthi", id: "CV111", mobile: "99112233", avatar: "https://ui-avatars.com/api/?name=Ahmed+Harthi&amp;background=0f172a&amp;color=fff", rating: 4.9, verified: true, reviews: [{user:"Ali", comment:"Great landlord"}] }</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const PROPERTIES = [</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>{ id: 1, landlord: 'Ahmed', title: "Sea View 2BHK", price: 600, beds: 2, baths: 3, area: 145, loc: "Al Mouj", img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&amp;fit=crop&amp;w=800&amp;q=80", type: "Apt" },</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>{ id: 2, landlord: 'Ahmed', title: "Muscat Hills Villa", price: 950, beds: 4, baths: 5, area: 350, loc: "Muscat Hills", img: "https://images.unsplash.com/photo-1600596542815-2250651d2116?auto=format&amp;fit=crop&amp;w=800&amp;q=80", type: "Villa" },</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>{ id: 3, landlord: 'Ahmed', title: "Azaiba Studio", price: 300, beds: 1, baths: 1, area: 75, loc: "Azaiba", img: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&amp;fit=crop&amp;w=800&amp;q=80", type: "Studio" }</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>];</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// --- COMPONENTS ---</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const Header = ({ title, back, onBack, rightIcon }) =&gt; (</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="bg-white px-4 pt-12 pb-4 flex justify-between items-center shadow-sm sticky top-0 z-20"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{back ? &lt;button onClick={onBack}&gt;&lt;i className="fas fa-chevron-left text-lg text-slate-600"&gt;&lt;/i&gt;&lt;/button&gt; : &lt;div className="w-4"&gt;&lt;/div&gt;}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h1 className="font-bold text-lg"&gt;{title}&lt;/h1&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="w-4"&gt;{rightIcon}&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>);</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const BottomNav = ({ active, onNav, role }) =&gt; (</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="fixed bottom-0 w-full bg-white border-t border-slate-200 flex justify-around items-center pb-6 pt-3 z-30 safe-area-bottom"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button onClick={() =&gt; onNav('home')} className={`flex flex-col items-center ${active === 'home' ? 'text-emerald-600' : 'text-slate-400'}`}&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;i className="fas fa-home text-xl mb-1"&gt;&lt;/i&gt;&lt;span className="text-[10px] font-medium"&gt;Home&lt;/span&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button onClick={() =&gt; onNav('apps')} className={`flex flex-col items-center ${active === 'apps' ? 'text-emerald-600' : 'text-slate-400'}`}&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;i className="fas fa-file-contract text-xl mb-1"&gt;&lt;/i&gt;&lt;span className="text-[10px] font-medium"&gt;{role === 'Tenant' ? 'My Apps' : 'Requests'}&lt;/span&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button onClick={() =&gt; onNav('profile')} className={`flex flex-col items-center ${active === 'profile' ? 'text-emerald-600' : 'text-slate-400'}`}&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;i className="fas fa-user text-xl mb-1"&gt;&lt;/i&gt;&lt;span className="text-[10px] font-medium"&gt;Profile&lt;/span&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>);</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const PropertyCard = ({ p, onClick }) =&gt; (</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div onClick={() =&gt; onClick(p)} className="bg-white rounded-2xl overflow-hidden shadow-sm mb-4"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="h-40 relative"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;img src={p.img} className="w-full h-full object-cover" /&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="absolute bottom-2 left-2 bg-slate-900/80 text-white px-2 py-1 rounded text-xs font-bold"&gt;{p.price} OMR&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="absolute top-2 right-2 bg-white/90 px-2 py-1 rounded-full text-[10px] font-bold text-emerald-600 flex items-center gap-1"&gt;&lt;i className="fas fa-check-circle"&gt;&lt;/i&gt; Verified&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="p-4"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h3 className="font-bold text-base mb-1"&gt;{p.title}&lt;/h3&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p className="text-xs text-slate-500 mb-3"&gt;&lt;i className="fas fa-map-marker-alt mr-1"&gt;&lt;/i&gt; {p.loc}&lt;/p&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="flex justify-between text-xs text-slate-600 border-t pt-3"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span&gt;&lt;i className="fas fa-bed"&gt;&lt;/i&gt; {p.beds}&lt;/span&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span&gt;&lt;i className="fas fa-bath"&gt;&lt;/i&gt; {p.baths}&lt;/span&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span&gt;&lt;i className="fas fa-ruler"&gt;&lt;/i&gt; {p.area}m²&lt;/span&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>);</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const PropertySheet = ({ p, onClose, onApply }) =&gt; (</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="fixed inset-0 z-50 flex flex-col justify-end bg-black/50 backdrop-blur-sm fade-in"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div onClick={onClose} className="flex-1"&gt;&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="bg-white rounded-t-3xl h-[85vh] overflow-y-auto slide-up relative"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;img src={p.img} className="w-full h-64 object-cover" /&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button onClick={onClose} className="absolute top-4 right-4 bg-white/30 p-2 rounded-full text-white"&gt;&lt;i className="fas fa-times"&gt;&lt;/i&gt;&lt;/button&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="p-6"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="flex justify-between items-start mb-4"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h2 className="text-2xl font-bold"&gt;{p.title}&lt;/h2&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p className="text-slate-500 text-sm"&gt;&lt;i className="fas fa-map-marker-alt mr-1"&gt;&lt;/i&gt; {p.loc}&lt;/p&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="text-emerald-600 font-bold text-xl"&gt;{p.price} OMR&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p7"><span class="s1"><span class="Apple-converted-space">                        </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="bg-slate-50 p-4 rounded-xl border border-slate-100 mb-6 flex items-center gap-3"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;img src={LANDLORDS[p.landlord].avatar} className="w-10 h-10 rounded-full" /&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="flex-1"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="font-bold text-sm"&gt;{LANDLORDS[p.landlord].name}&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="text-xs text-emerald-600"&gt;&lt;i className="fas fa-badge-check"&gt;&lt;/i&gt; Verified Owner&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="text-yellow-500 text-xs font-bold"&gt;&lt;i className="fas fa-star"&gt;&lt;/i&gt; {LANDLORDS[p.landlord].rating}&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 className="font-bold mb-2"&gt;Description&lt;/h3&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p className="text-sm text-slate-600 leading-relaxed mb-20"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>Modern apartment with sea views. Includes gym access and covered parking. Perfect for professionals.</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="absolute bottom-0 w-full bg-white border-t p-4 safe-area-bottom"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;button onClick={onApply} className="w-full bg-emerald-600 text-white py-3 rounded-xl font-bold shadow-lg"&gt;Apply Now&lt;/button&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>);</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const ContractMobile = ({ p, onSign, signed, role, autoFill }) =&gt; {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const [fields, setFields] = useState({});</span></p>
-<p class="p7"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>useEffect(() =&gt; {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>if(autoFill) {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>const data = {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>l_name: LANDLORDS[p.landlord].name, l_id: LANDLORDS[p.landlord].id,</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>t_name: TENANT.name, t_id: TENANT.id,</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>rent: p.price + " OMR", loc: p.loc</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>};</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>let delay = 300;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>Object.keys(data).forEach(k =&gt; { setTimeout(() =&gt; setFields(prev =&gt; ({...prev, [k]: data[k]})), delay); delay+=100; });</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>} else {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>setFields({ l_name: LANDLORDS[p.landlord].name, t_name: TENANT.name, rent: p.price, loc: p.loc });</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>}, []);</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>return (</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="bg-white p-4 rounded-xl border border-slate-200 text-sm shadow-sm m-4"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="text-center border-b pb-4 mb-4"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Emblem_of_Oman.svg/1200px-Emblem_of_Oman.svg.png" className="h-10 mx-auto opacity-80" /&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 className="font-bold mt-2"&gt;MUNICIPALITY CONTRACT&lt;/h3&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="text-xs text-emerald-600 font-mono"&gt;#WQ-2026-881&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="space-y-3 mb-6"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div&gt;&lt;span className="mm-label"&gt;Landlord&lt;/span&gt;&lt;div className={`mm-input ${fields.l_name &amp;&amp; autoFill &amp;&amp; 'typing'}`}&gt;{fields.l_name}&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div&gt;&lt;span className="mm-label"&gt;Tenant&lt;/span&gt;&lt;div className={`mm-input ${fields.t_name &amp;&amp; autoFill &amp;&amp; 'typing'}`}&gt;{fields.t_name}&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="grid grid-cols-2 gap-2"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div&gt;&lt;span className="mm-label"&gt;Rent&lt;/span&gt;&lt;div className={`mm-input font-bold ${fields.rent &amp;&amp; autoFill &amp;&amp; 'typing'}`}&gt;{fields.rent}&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div&gt;&lt;span className="mm-label"&gt;Loc&lt;/span&gt;&lt;div className={`mm-input ${fields.loc &amp;&amp; autoFill &amp;&amp; 'typing'}`}&gt;{fields.loc}&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="border-t pt-4 text-center"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="text-xs text-slate-400 uppercase font-bold mb-2"&gt;{role} Signature&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{signed ?<span class="Apple-converted-space"> </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;span className="signature-font text-blue-600 text-xl"&gt;{role==='Tenant'?TENANT.name:LANDLORDS[p.landlord].name}&lt;/span&gt; :</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;button onClick={onSign} className="w-full bg-blue-600 text-white py-2 rounded-lg font-bold text-xs animate-pulse"&gt;Tap to Sign&lt;/button&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// --- SCREENS ---</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const TenantHome = ({ onPropClick }) =&gt; (</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="p-4 pb-24"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="flex gap-2 overflow-x-auto pb-4 no-scrollbar"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="bg-emerald-600 text-white px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap"&gt;All Properties&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="bg-white border px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap"&gt;Al Mouj&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="bg-white border px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap"&gt;Muscat Hills&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{PROPERTIES.map(p =&gt; &lt;PropertyCard key={p.id} p={p} onClick={onPropClick} /&gt;)}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>);</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const LandlordDash = ({ hasApp, appSigned, onReview }) =&gt; (</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="p-4 pb-24"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 mb-6"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="text-xs text-slate-500 uppercase font-bold"&gt;Revenue (Feb)&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="text-2xl font-bold text-slate-800"&gt;1,200 OMR&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="w-full bg-gray-100 h-1.5 rounded-full mt-2"&gt;&lt;div className="bg-emerald-500 h-1.5 rounded-full w-2/3"&gt;&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3 className="font-bold text-lg mb-4"&gt;Requests&lt;/h3&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{hasApp ? (</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="bg-white p-4 rounded-xl border border-blue-100 shadow-sm relative overflow-hidden"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="absolute top-0 right-0 bg-blue-500 text-white text-[10px] px-2 py-1 rounded-bl font-bold"&gt;NEW&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="flex gap-3 items-center mb-3"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;img src={TENANT.avatar} className="w-10 h-10 rounded-full" /&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="font-bold text-sm"&gt;{TENANT.name}&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="text-xs text-emerald-600 font-bold"&gt;Mala'a: 720&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{appSigned ?<span class="Apple-converted-space"> </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="bg-gray-100 text-center py-2 rounded text-xs font-bold text-gray-500"&gt;Contract Sent&lt;/div&gt; :</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;button onClick={onReview} className="w-full bg-emerald-600 text-white py-2 rounded-lg text-xs font-bold"&gt;Review &amp; Sign&lt;/button&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>) : &lt;div className="text-center text-slate-400 text-sm py-10"&gt;No pending requests&lt;/div&gt;}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>);</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const App = () =&gt; {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const [role, setRole] = useState('Tenant');</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const [view, setView] = useState('home');<span class="Apple-converted-space"> </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const [selectedP, setSelectedP] = useState(null);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const [sheetOpen, setSheetOpen] = useState(false);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const [appStep, setAppStep] = useState(0); // 0:None, 1:Upload, 2:Contract, 3:Sent</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const [l_Signed, setLSigned] = useState(false);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const [t_Paid, setTPaid] = useState(false);</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>// Handlers</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const startApp = () =&gt; { setSheetOpen(false); setAppStep(1); setView('apply'); };</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const uploadMalaa = () =&gt; { setTimeout(() =&gt; setAppStep(2), 1000); };</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const tenantSign = () =&gt; { setAppStep(3); alert("Sent to Landlord!"); setView('home'); };</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const landlordReview = () =&gt; { setLSigned(true); alert("Approved &amp; Countersigned!"); };</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const tenantPay = () =&gt; { setTPaid(true); alert("Paid! Contract Active."); };</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>return (</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="min-h-screen bg-slate-50 flex flex-col"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>{/* ROLE SWITCHER */}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="bg-slate-900 text-white text-[10px] p-2 text-center" onClick={() =&gt; setRole(r =&gt; r==='Tenant'?'Landlord':'Tenant')}&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>Current Role: &lt;span className="font-bold text-emerald-400"&gt;{role}&lt;/span&gt; (Tap to Switch)</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;Header title={view==='home'?'Wathiq.om':(view==='apply'?'Application':'Dashboard')} back={view!=='home'} onBack={() =&gt; setView('home')} /&gt;</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="flex-1 overflow-y-auto no-scrollbar"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{role === 'Tenant' &amp;&amp; view === 'home' &amp;&amp; &lt;TenantHome onPropClick={(p) =&gt; { setSelectedP(p); setSheetOpen(true); }} /&gt;}</span></p>
-<p class="p7"><span class="s1"><span class="Apple-converted-space">                        </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{role === 'Landlord' &amp;&amp; (view === 'home' || view === 'landlord_dash') &amp;&amp;<span class="Apple-converted-space"> </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;LandlordDash hasApp={appStep===3} appSigned={l_Signed} onReview={landlordReview} /&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>}</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{/* TENANT APPLICATION FLOW */}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{view === 'apply' &amp;&amp; appStep === 1 &amp;&amp; (</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="p-8 text-center mt-10"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;i className="fas fa-id-card text-5xl text-blue-500 mb-4"&gt;&lt;/i&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h2 className="text-xl font-bold mb-2"&gt;Verify Identity&lt;/h2&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p className="text-sm text-slate-500 mb-8"&gt;Upload Mala'a PDF to auto-fill contract.&lt;/p&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;button onClick={uploadMalaa} className="w-full py-3 border-2 border-dashed border-blue-300 text-blue-600 font-bold rounded-xl"&gt;Select File&lt;/button&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>)}</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{view === 'apply' &amp;&amp; appStep === 2 &amp;&amp; (</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;ContractMobile p={selectedP} role="Tenant" autoFill={true} signed={false} onSign={tenantSign} /&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="px-4"&gt;&lt;button onClick={tenantSign} className="w-full bg-emerald-600 text-white py-3 rounded-xl font-bold shadow"&gt;Sign &amp; Send Offer&lt;/button&gt;&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>)}</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{/* ACTIVE CONTRACT VIEW */}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{role === 'Tenant' &amp;&amp; view === 'apps' &amp;&amp; (</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="p-4"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h3 className="font-bold mb-4"&gt;My Contracts&lt;/h3&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>{l_Signed ? (</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="bg-white p-4 rounded-xl border border-emerald-100 shadow-sm relative overflow-hidden"&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>{t_Paid &amp;&amp; &lt;div className="absolute top-2 right-2 stamp-active text-[10px] font-bold border-2 border-emerald-600 text-emerald-600 p-1 rounded rotate-12"&gt;REGISTERED&lt;br/&gt;RD 15/2025&lt;/div&gt;}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;div className="font-bold text-lg mb-1"&gt;{selectedP.title}&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;div className="text-xs text-slate-500 mb-4"&gt;{l_Signed &amp;&amp; !t_Paid ? "Waiting for Payment" : "Active"}&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>{!t_Paid ? &lt;button onClick={tenantPay} className="w-full bg-blue-600 text-white py-2 rounded-lg text-xs font-bold"&gt;Pay &amp; Activate&lt;/button&gt; : &lt;div className="text-center text-xs text-emerald-600 font-bold bg-emerald-50 py-2 rounded"&gt;Direct Debit Active&lt;/div&gt;}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>) : &lt;div className="text-center text-slate-400 text-sm mt-10"&gt;No active contracts&lt;/div&gt;}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>)}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>{sheetOpen &amp;&amp; &lt;PropertySheet p={selectedP} onClose={() =&gt; setSheetOpen(false)} onApply={startApp} /&gt;}</span></p>
-<p class="p7"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;BottomNav active={view} onNav={(v) =&gt; { if(v==='apps' &amp;&amp; role==='Landlord') { setView('home'); } else { setView(v); } }} role={role} /&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
-<p class="p7"><span class="s11"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const root = ReactDOM.createRoot(document.getElementById('root'));</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>root.render(&lt;App /&gt;);</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">script</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s3">&lt;/</span><span class="s1">body</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s3">&lt;/</span><span class="s1">html</span><span class="s3">&gt;</span></p>
+<body class="bg-gray-100 text-slate-800">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // --- DATA (Same as V17) ---
+        const TENANT = { 
+            name: "Sara Khan", id: "CV99281", mobile: "99887766", email: "sara.khan@gmail.com", 
+            avatar: "https://ui-avatars.com/api/?name=Sara+Khan&background=db2777&color=fff",
+            rating: 4.8, sector: "Private Sector", nationality: "Expat",
+            reviews: [{ user: "Landlord X", comment: "Paid on time." }]
+        };
+        const LANDLORDS = {
+            'Ahmed': { name: "Ahmed Al-Harthi", id: "CV111", mobile: "99112233", avatar: "https://ui-avatars.com/api/?name=Ahmed+Harthi&background=0f172a&color=fff", rating: 4.9, verified: true, reviews: [{user:"Ali", comment:"Great landlord"}] }
+        };
+        const PROPERTIES = [
+            { id: 1, landlord: 'Ahmed', title: "Sea View 2BHK", price: 600, beds: 2, baths: 3, area: 145, loc: "Al Mouj", img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80", type: "Apt" },
+            { id: 2, landlord: 'Ahmed', title: "Muscat Hills Villa", price: 950, beds: 4, baths: 5, area: 350, loc: "Muscat Hills", img: "https://images.unsplash.com/photo-1600596542815-2250651d2116?auto=format&fit=crop&w=800&q=80", type: "Villa" },
+            { id: 3, landlord: 'Ahmed', title: "Azaiba Studio", price: 300, beds: 1, baths: 1, area: 75, loc: "Azaiba", img: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80", type: "Studio" }
+        ];
+
+        // --- COMPONENTS ---
+
+        const Header = ({ title, back, onBack, rightIcon }) => (
+            <div className="bg-white px-4 pt-12 pb-4 flex justify-between items-center shadow-sm sticky top-0 z-20">
+                {back ? <button onClick={onBack}><i className="fas fa-chevron-left text-lg text-slate-600"></i></button> : <div className="w-4"></div>}
+                <h1 className="font-bold text-lg">{title}</h1>
+                <div className="w-4">{rightIcon}</div>
+            </div>
+        );
+
+        const BottomNav = ({ active, onNav, role }) => (
+            <div className="fixed bottom-0 w-full bg-white border-t border-slate-200 flex justify-around items-center pb-6 pt-3 z-30 safe-area-bottom">
+                <button onClick={() => onNav('home')} className={`flex flex-col items-center ${active === 'home' ? 'text-emerald-600' : 'text-slate-400'}`}>
+                    <i className="fas fa-home text-xl mb-1"></i><span className="text-[10px] font-medium">Home</span>
+                </button>
+                <button onClick={() => onNav('apps')} className={`flex flex-col items-center ${active === 'apps' ? 'text-emerald-600' : 'text-slate-400'}`}>
+                    <i className="fas fa-file-contract text-xl mb-1"></i><span className="text-[10px] font-medium">{role === 'Tenant' ? 'My Apps' : 'Requests'}</span>
+                </button>
+                <button onClick={() => onNav('profile')} className={`flex flex-col items-center ${active === 'profile' ? 'text-emerald-600' : 'text-slate-400'}`}>
+                    <i className="fas fa-user text-xl mb-1"></i><span className="text-[10px] font-medium">Profile</span>
+                </button>
+            </div>
+        );
+
+        const PropertyCard = ({ p, onClick }) => (
+            <div onClick={() => onClick(p)} className="bg-white rounded-2xl overflow-hidden shadow-sm mb-4">
+                <div className="h-40 relative">
+                    <img src={p.img} className="w-full h-full object-cover" />
+                    <div className="absolute bottom-2 left-2 bg-slate-900/80 text-white px-2 py-1 rounded text-xs font-bold">{p.price} OMR</div>
+                    <div className="absolute top-2 right-2 bg-white/90 px-2 py-1 rounded-full text-[10px] font-bold text-emerald-600 flex items-center gap-1"><i className="fas fa-check-circle"></i> Verified</div>
+                </div>
+                <div className="p-4">
+                    <h3 className="font-bold text-base mb-1">{p.title}</h3>
+                    <p className="text-xs text-slate-500 mb-3"><i className="fas fa-map-marker-alt mr-1"></i> {p.loc}</p>
+                    <div className="flex justify-between text-xs text-slate-600 border-t pt-3">
+                        <span><i className="fas fa-bed"></i> {p.beds}</span>
+                        <span><i className="fas fa-bath"></i> {p.baths}</span>
+                        <span><i className="fas fa-ruler"></i> {p.area}m²</span>
+                    </div>
+                </div>
+            </div>
+        );
+
+        const PropertySheet = ({ p, onClose, onApply }) => (
+            <div className="fixed inset-0 z-50 flex flex-col justify-end bg-black/50 backdrop-blur-sm fade-in">
+                <div onClick={onClose} className="flex-1"></div>
+                <div className="bg-white rounded-t-3xl h-[85vh] overflow-y-auto slide-up relative">
+                    <img src={p.img} className="w-full h-64 object-cover" />
+                    <button onClick={onClose} className="absolute top-4 right-4 bg-white/30 p-2 rounded-full text-white"><i className="fas fa-times"></i></button>
+                    <div className="p-6">
+                        <div className="flex justify-between items-start mb-4">
+                            <div>
+                                <h2 className="text-2xl font-bold">{p.title}</h2>
+                                <p className="text-slate-500 text-sm"><i className="fas fa-map-marker-alt mr-1"></i> {p.loc}</p>
+                            </div>
+                            <div className="text-emerald-600 font-bold text-xl">{p.price} OMR</div>
+                        </div>
+                        
+                        <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 mb-6 flex items-center gap-3">
+                            <img src={LANDLORDS[p.landlord].avatar} className="w-10 h-10 rounded-full" />
+                            <div className="flex-1">
+                                <div className="font-bold text-sm">{LANDLORDS[p.landlord].name}</div>
+                                <div className="text-xs text-emerald-600"><i className="fas fa-badge-check"></i> Verified Owner</div>
+                            </div>
+                            <div className="text-yellow-500 text-xs font-bold"><i className="fas fa-star"></i> {LANDLORDS[p.landlord].rating}</div>
+                        </div>
+
+                        <h3 className="font-bold mb-2">Description</h3>
+                        <p className="text-sm text-slate-600 leading-relaxed mb-20">
+                            Modern apartment with sea views. Includes gym access and covered parking. Perfect for professionals.
+                        </p>
+                    </div>
+                    <div className="absolute bottom-0 w-full bg-white border-t p-4 safe-area-bottom">
+                        <button onClick={onApply} className="w-full bg-emerald-600 text-white py-3 rounded-xl font-bold shadow-lg">Apply Now</button>
+                    </div>
+                </div>
+            </div>
+        );
+
+        const ContractMobile = ({ p, onSign, signed, role, autoFill }) => {
+            const [fields, setFields] = useState({});
+            
+            useEffect(() => {
+                if(autoFill) {
+                    const data = {
+                        l_name: LANDLORDS[p.landlord].name, l_id: LANDLORDS[p.landlord].id,
+                        t_name: TENANT.name, t_id: TENANT.id,
+                        rent: p.price + " OMR", loc: p.loc
+                    };
+                    let delay = 300;
+                    Object.keys(data).forEach(k => { setTimeout(() => setFields(prev => ({...prev, [k]: data[k]})), delay); delay+=100; });
+                } else {
+                    setFields({ l_name: LANDLORDS[p.landlord].name, t_name: TENANT.name, rent: p.price, loc: p.loc });
+                }
+            }, []);
+
+            return (
+                <div className="bg-white p-4 rounded-xl border border-slate-200 text-sm shadow-sm m-4">
+                    <div className="text-center border-b pb-4 mb-4">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Emblem_of_Oman.svg/1200px-Emblem_of_Oman.svg.png" className="h-10 mx-auto opacity-80" />
+                        <h3 className="font-bold mt-2">MUNICIPALITY CONTRACT</h3>
+                        <div className="text-xs text-emerald-600 font-mono">#WQ-2026-881</div>
+                    </div>
+                    <div className="space-y-3 mb-6">
+                        <div><span className="mm-label">Landlord</span><div className={`mm-input ${fields.l_name && autoFill && 'typing'}`}>{fields.l_name}</div></div>
+                        <div><span className="mm-label">Tenant</span><div className={`mm-input ${fields.t_name && autoFill && 'typing'}`}>{fields.t_name}</div></div>
+                        <div className="grid grid-cols-2 gap-2">
+                            <div><span className="mm-label">Rent</span><div className={`mm-input font-bold ${fields.rent && autoFill && 'typing'}`}>{fields.rent}</div></div>
+                            <div><span className="mm-label">Loc</span><div className={`mm-input ${fields.loc && autoFill && 'typing'}`}>{fields.loc}</div></div>
+                        </div>
+                    </div>
+                    <div className="border-t pt-4 text-center">
+                        <div className="text-xs text-slate-400 uppercase font-bold mb-2">{role} Signature</div>
+                        {signed ? 
+                            <span className="signature-font text-blue-600 text-xl">{role==='Tenant'?TENANT.name:LANDLORDS[p.landlord].name}</span> :
+                            <button onClick={onSign} className="w-full bg-blue-600 text-white py-2 rounded-lg font-bold text-xs animate-pulse">Tap to Sign</button>
+                        }
+                    </div>
+                </div>
+            );
+        };
+
+        // --- SCREENS ---
+
+        const TenantHome = ({ onPropClick }) => (
+            <div className="p-4 pb-24">
+                <div className="flex gap-2 overflow-x-auto pb-4 no-scrollbar">
+                    <div className="bg-emerald-600 text-white px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap">All Properties</div>
+                    <div className="bg-white border px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap">Al Mouj</div>
+                    <div className="bg-white border px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap">Muscat Hills</div>
+                </div>
+                {PROPERTIES.map(p => <PropertyCard key={p.id} p={p} onClick={onPropClick} />)}
+            </div>
+        );
+
+        const LandlordDash = ({ hasApp, appSigned, onReview }) => (
+            <div className="p-4 pb-24">
+                <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 mb-6">
+                    <div className="text-xs text-slate-500 uppercase font-bold">Revenue (Feb)</div>
+                    <div className="text-2xl font-bold text-slate-800">1,200 OMR</div>
+                    <div className="w-full bg-gray-100 h-1.5 rounded-full mt-2"><div className="bg-emerald-500 h-1.5 rounded-full w-2/3"></div></div>
+                </div>
+                <h3 className="font-bold text-lg mb-4">Requests</h3>
+                {hasApp ? (
+                    <div className="bg-white p-4 rounded-xl border border-blue-100 shadow-sm relative overflow-hidden">
+                        <div className="absolute top-0 right-0 bg-blue-500 text-white text-[10px] px-2 py-1 rounded-bl font-bold">NEW</div>
+                        <div className="flex gap-3 items-center mb-3">
+                            <img src={TENANT.avatar} className="w-10 h-10 rounded-full" />
+                            <div>
+                                <div className="font-bold text-sm">{TENANT.name}</div>
+                                <div className="text-xs text-emerald-600 font-bold">Mala'a: 720</div>
+                            </div>
+                        </div>
+                        {appSigned ? 
+                            <div className="bg-gray-100 text-center py-2 rounded text-xs font-bold text-gray-500">Contract Sent</div> :
+                            <button onClick={onReview} className="w-full bg-emerald-600 text-white py-2 rounded-lg text-xs font-bold">Review & Sign</button>
+                        }
+                    </div>
+                ) : <div className="text-center text-slate-400 text-sm py-10">No pending requests</div>}
+            </div>
+        );
+
+        const App = () => {
+            const [role, setRole] = useState('Tenant');
+            const [view, setView] = useState('home'); 
+            const [selectedP, setSelectedP] = useState(null);
+            const [sheetOpen, setSheetOpen] = useState(false);
+            const [appStep, setAppStep] = useState(0); // 0:None, 1:Upload, 2:Contract, 3:Sent
+            const [l_Signed, setLSigned] = useState(false);
+            const [t_Paid, setTPaid] = useState(false);
+
+            // Handlers
+            const startApp = () => { setSheetOpen(false); setAppStep(1); setView('apply'); };
+            const uploadMalaa = () => { setTimeout(() => setAppStep(2), 1000); };
+            const tenantSign = () => { setAppStep(3); alert("Sent to Landlord!"); setView('home'); };
+            const landlordReview = () => { setLSigned(true); alert("Approved & Countersigned!"); };
+            const tenantPay = () => { setTPaid(true); alert("Paid! Contract Active."); };
+
+            return (
+                <div className="min-h-screen bg-slate-50 flex flex-col">
+                    {/* ROLE SWITCHER */}
+                    <div className="bg-slate-900 text-white text-[10px] p-2 text-center" onClick={() => setRole(r => r==='Tenant'?'Landlord':'Tenant')}>
+                        Current Role: <span className="font-bold text-emerald-400">{role}</span> (Tap to Switch)
+                    </div>
+
+                    <Header title={view==='home'?'Wathiq.om':(view==='apply'?'Application':'Dashboard')} back={view!=='home'} onBack={() => setView('home')} />
+
+                    <div className="flex-1 overflow-y-auto no-scrollbar">
+                        {role === 'Tenant' && view === 'home' && <TenantHome onPropClick={(p) => { setSelectedP(p); setSheetOpen(true); }} />}
+                        
+                        {role === 'Landlord' && (view === 'home' || view === 'landlord_dash') && 
+                            <LandlordDash hasApp={appStep===3} appSigned={l_Signed} onReview={landlordReview} />
+                        }
+
+                        {/* TENANT APPLICATION FLOW */}
+                        {view === 'apply' && appStep === 1 && (
+                            <div className="p-8 text-center mt-10">
+                                <i className="fas fa-id-card text-5xl text-blue-500 mb-4"></i>
+                                <h2 className="text-xl font-bold mb-2">Verify Identity</h2>
+                                <p className="text-sm text-slate-500 mb-8">Upload Mala'a PDF to auto-fill contract.</p>
+                                <button onClick={uploadMalaa} className="w-full py-3 border-2 border-dashed border-blue-300 text-blue-600 font-bold rounded-xl">Select File</button>
+                            </div>
+                        )}
+
+                        {view === 'apply' && appStep === 2 && (
+                            <div>
+                                <ContractMobile p={selectedP} role="Tenant" autoFill={true} signed={false} onSign={tenantSign} />
+                                <div className="px-4"><button onClick={tenantSign} className="w-full bg-emerald-600 text-white py-3 rounded-xl font-bold shadow">Sign & Send Offer</button></div>
+                            </div>
+                        )}
+
+                        {/* ACTIVE CONTRACT VIEW */}
+                        {role === 'Tenant' && view === 'apps' && (
+                            <div className="p-4">
+                                <h3 className="font-bold mb-4">My Contracts</h3>
+                                {l_Signed ? (
+                                    <div className="bg-white p-4 rounded-xl border border-emerald-100 shadow-sm relative overflow-hidden">
+                                        {t_Paid && <div className="absolute top-2 right-2 stamp-active text-[10px] font-bold border-2 border-emerald-600 text-emerald-600 p-1 rounded rotate-12">REGISTERED<br/>RD 15/2025</div>}
+                                        <div className="font-bold text-lg mb-1">{selectedP.title}</div>
+                                        <div className="text-xs text-slate-500 mb-4">{l_Signed && !t_Paid ? "Waiting for Payment" : "Active"}</div>
+                                        {!t_Paid ? <button onClick={tenantPay} className="w-full bg-blue-600 text-white py-2 rounded-lg text-xs font-bold">Pay & Activate</button> : <div className="text-center text-xs text-emerald-600 font-bold bg-emerald-50 py-2 rounded">Direct Debit Active</div>}
+                                    </div>
+                                ) : <div className="text-center text-slate-400 text-sm mt-10">No active contracts</div>}
+                            </div>
+                        )}
+                    </div>
+
+                    {sheetOpen && <PropertySheet p={selectedP} onClose={() => setSheetOpen(false)} onApply={startApp} />}
+                    
+                    <BottomNav active={view} onNav={(v) => { if(v==='apps' && role==='Landlord') { setView('home'); } else { setView(v); } }} role={role} />
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
 </body>
 </html>
